@@ -16,7 +16,7 @@ public class ZooManagerApplication {
   @Bean
 	public CommandLineRunner setUpApp(AnimalService animalService) {
 		return (args) -> {
-			animalService.test();
+
 		};
 	}
 }
