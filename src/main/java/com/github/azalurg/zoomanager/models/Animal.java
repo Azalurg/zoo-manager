@@ -37,6 +37,11 @@ public class Animal {
 
 //    ------------------------------
 
+    public Animal(String name, Date adoptDate){
+        this.name = name;
+        this.adoptDate = adoptDate;
+    }
+
     public Animal() {
     }
 

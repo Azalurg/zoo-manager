@@ -1,5 +1,6 @@
 package com.github.azalurg.zoomanager;
 
+import com.github.azalurg.zoomanager.services.AnimalService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,8 +14,9 @@ public class ZooManagerApplication {
 	}
 
   @Bean
-	public CommandLineRunner setUpApp() {
+	public CommandLineRunner setUpApp(AnimalService animalService) {
 		return (args) -> {
+			animalService.test();
 		};
 	}
 }
