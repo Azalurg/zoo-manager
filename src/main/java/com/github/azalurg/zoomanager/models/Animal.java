@@ -5,10 +5,10 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-//@Table(name = "Animals")
 public class Animal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,8 @@ public class Animal {
     @Nullable
     private HealthCard healthCard;
 
-    @ManyToMany
-    @JoinTable(name="AnimalsKeepers")
-    private Set<Keeper> keepers;
+    @ManyToMany(mappedBy = "animals")
+    private Set<Keeper> keepers = new HashSet<>();
 
     @NotNull
     private String name;
@@ -32,12 +31,14 @@ public class Animal {
     @NotNull
     private Date adoptDate;
 
+    @Nullable
     private String description;
+    @Nullable
     private String image;
 
 //    ------------------------------
 
-    public Animal(String name, Date adoptDate){
+    public Animal(String name, Date adoptDate, String description){
         this.name = name;
         this.adoptDate = adoptDate;
     }
@@ -48,6 +49,8 @@ public class Animal {
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id) { this.id = id; }
 
     public String getName() {
         return name;
@@ -101,6 +104,14 @@ public class Animal {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void addKeeper(Keeper keeper) {
+        this.keepers.add(keeper);
+    }
+
+    public void removeKeeper(Keeper keeper) {
+        this.keepers.remove(keeper);
     }
 
     @Override

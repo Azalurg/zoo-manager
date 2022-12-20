@@ -3,10 +3,10 @@ package com.github.azalurg.zoomanager.models;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-//@Table(name = "Keepers")
 public class Keeper {
 
     @Id
@@ -14,8 +14,8 @@ public class Keeper {
     private Long id;
 
     @ManyToMany
-    @JoinTable(name="AnimalsKeepers")
-    private Set<Animal> animals;
+    @JoinTable(name = "animals_keepers", joinColumns = @JoinColumn(name = "keeper_id"), inverseJoinColumns = @JoinColumn(name = "animal_id"))
+    private Set<Animal> animals = new HashSet<>();
 
     @NotNull
     private String name;
@@ -37,6 +37,15 @@ public class Keeper {
     private String username;
 
     public Keeper() {
+    }
+
+    public Keeper(String name, String surname, String address, String email, String password, String username) {
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+        this.email = email;
+        this.password = password;
+        this.username = username;
     }
 
     public Long getId() {
@@ -105,6 +114,14 @@ public class Keeper {
 
     public void setAnimals(Set<Animal> animals) {
         this.animals = animals;
+    }
+
+    public void addAnimal(Animal animal) {
+        this.animals.add(animal);
+    }
+
+    public void removeAnimal(Animal animal) {
+        this.animals.remove(animal);
     }
 
     @Override
