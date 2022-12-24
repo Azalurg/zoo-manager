@@ -22,7 +22,8 @@ public class Animal {
     @Nullable
     private HealthCard healthCard;
 
-    @ManyToMany(mappedBy = "animals")
+    @ManyToMany
+    @JoinTable(name = "animals_keepers", joinColumns = @JoinColumn(name = "animal_id"), inverseJoinColumns = @JoinColumn(name = "keeper_id"))
     private Set<Keeper> keepers = new HashSet<>();
 
     @NotNull
@@ -41,6 +42,7 @@ public class Animal {
     public Animal(String name, Date adoptDate, String description){
         this.name = name;
         this.adoptDate = adoptDate;
+        this.description = description;
     }
 
     public Animal() {

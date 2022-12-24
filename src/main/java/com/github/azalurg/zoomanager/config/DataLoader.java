@@ -43,9 +43,9 @@ public class DataLoader implements CommandLineRunner {
         animalService.createAnimal(animal3);
 
         // Add animals to keepers
-        keeperService.addAnimalToKeeper(keeper1, animal1);
-//        keeperService.addAnimalToKeeper(keeper1, animal2);
-        keeperService.addAnimalToKeeper(keeper2, animal1);
-        keeperService.addAnimalToKeeper(keeper2, animal3);
+        animalService.addKeeperToAnimal(animal1, keeper1);
+//        animalService.addKeeperToAnimal(animal1, keeper2);
+        animalService.addKeeperToAnimal(animal2, keeper1);
+//        animalService.addKeeperToAnimal(animal3, keeper2);
     }
 }

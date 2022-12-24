@@ -13,8 +13,7 @@ public class Keeper {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany
-    @JoinTable(name = "animals_keepers", joinColumns = @JoinColumn(name = "keeper_id"), inverseJoinColumns = @JoinColumn(name = "animal_id"))
+    @ManyToMany(mappedBy = "keepers")
     private Set<Animal> animals = new HashSet<>();
 
     @NotNull
