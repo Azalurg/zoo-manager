@@ -1,4 +1,6 @@
 # ZOO Manager
 
 ## Todo:
-- Reverse mapping Animal <-> Keeper
+- Finish login page
+  - Implement autherization 
+  - Update Keeper class

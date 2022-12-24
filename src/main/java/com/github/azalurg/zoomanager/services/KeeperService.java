@@ -47,11 +47,7 @@ public class KeeperService {
         keeperRepository.deleteById(id);
     }
 
-    public void addAnimalToKeeper(Keeper keeper, Animal animal) {
-        if (keeper.getAnimals().contains(animal)) {
-            return;
-        }
-        keeper.addAnimal(animal);
-        keeperRepository.save(keeper);
+    public Keeper findByUsername(String username) {
+        return keeperRepository.findByUsername(username);
     }
 }
