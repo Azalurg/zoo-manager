@@ -29,8 +29,14 @@ public class WebKeeperController {
     public String profile(Model model, HttpSession session) {
         // get logged-in keeper from the session attribute
         Keeper keeper = (Keeper) session.getAttribute("loggedInUser");
-        model.addAttribute("keeper", keeper);
-        return "keepers/profile";
+        if (keeper != null){
+            model.addAttribute("keeper", keeper);
+            return "keepers/profile";
+        }
+        else{
+            model.addAttribute("errorMessage", "You are not login in!");
+            return "common/error";
+        }
     }
 
     @PostMapping("/login")
