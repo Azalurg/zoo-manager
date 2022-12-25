@@ -1,0 +1,13 @@
+<ul>
+  <li><a th:href="@{/}">Home</a></li>
+  <li><a th:href="@{/animals}">All Animals</a></li>
+  <li><a th:href="@{/keepers/login}">Login</a></li>
+</ul>
+<ul>
+  <li>
+    <form th:action="@{/search}" method="get">
+      <input type="text" name="q" placeholder="Search...">
+      <button type="submit">Search</button>
+    </form>
+  </li>
+</ul>
