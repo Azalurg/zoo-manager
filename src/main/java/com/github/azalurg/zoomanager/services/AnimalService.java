@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @Transactional
@@ -42,8 +43,20 @@ public class AnimalService {
         animalRepository.deleteById(id);
     }
 
+    public List<Keeper> getKeepersForAnimal(Long animalId) {
+        return animalRepository.findKeepersByAnimalId(animalId);
+    }
+
     public void addKeeperToAnimal(Animal animal, Keeper keeper) {
-        animal.addKeeper(keeper);
+        List<Keeper> keepers = animalRepository.findKeepersByAnimalId(animal.getId());
+        for (Keeper k : keepers) {
+            if (Objects.equals(k.getId(), keeper.getId())) {
+                return;
+            }
+        }
+        keepers.add(keeper);
+        animal.setKeepers(keepers);
         animalRepository.save(animal);
     }
+
 }

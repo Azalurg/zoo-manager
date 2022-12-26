@@ -32,6 +32,9 @@ public class DataLoader implements CommandLineRunner {
         Keeper keeper2 = new Keeper("Jane", "Doe", "456 Main St", "jane@example.com", "password", "jane_doe");
         keeperService.createKeeper(keeper2);
 
+        Keeper keeper3 = new Keeper("Bob", "Kel", "789 Main St", "bob@example.com", "password", "bob_kel");
+        keeperService.createKeeper(keeper3);
+
         // Create animals
         Animal animal1 = new Animal("Lion", new Date(), "A majestic lion");
         animalService.createAnimal(animal1);
@@ -43,9 +46,13 @@ public class DataLoader implements CommandLineRunner {
         animalService.createAnimal(animal3);
 
         // Add animals to keepers
+
         animalService.addKeeperToAnimal(animal1, keeper1);
         animalService.addKeeperToAnimal(animal1, keeper2);
-        animalService.addKeeperToAnimal(animal2, keeper1);
-        animalService.addKeeperToAnimal(animal3, keeper2);
+        animalService.addKeeperToAnimal(animal1, keeper3);
+        animalService.addKeeperToAnimal(animal2, keeper2);
+        animalService.addKeeperToAnimal(animal2, keeper3);
+        animalService.addKeeperToAnimal(animal3, keeper3);
+//        animalService.addKeeperToAnimal(animal1, keeper1);
     }
 }

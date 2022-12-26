@@ -1,7 +1,7 @@
 # ZOO Manager
 
 ## Todo:
-- Cookies
-- Relation betwen Keeper and Animal
-- Species
-- HealthCard
+- [ ] Cookies
+- [X] Relation betwen Keeper and Animal
+- [ ] Species
+- [ ] HealthCard

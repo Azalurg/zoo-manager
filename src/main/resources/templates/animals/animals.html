@@ -2,23 +2,27 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:include="common/head.html"/>
 <body>
-    <nav th:include="common/navbar"></nav>
-    <h1>Animals</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="animal : ${animals}">
-            <td th:text="${animal.id}"></td>
-            <td th:text="${animal.name}"></td>
-            <td th:text="${animal.description}"></td>
-        </tr>
-        </tbody>
-    </table>
+<nav th:include="common/navbar"></nav>
+<h1>Animals</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Keepers</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="animal : ${animals}">
+        <td th:text="${animal.id}"></td>
+        <td th:text="${animal.name}"></td>
+        <td th:text="${animal.description}"></td>
+        <td>
+            <span th:each="keeper : ${animal.keepers}" th:text="${keeper.name}"></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
