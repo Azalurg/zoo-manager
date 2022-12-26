@@ -4,10 +4,12 @@ import com.github.azalurg.zoomanager.api.ResourceNotFoundException;
 import com.github.azalurg.zoomanager.models.Animal;
 import com.github.azalurg.zoomanager.models.Keeper;
 import com.github.azalurg.zoomanager.repositories.AnimalRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 @Service
@@ -20,8 +22,12 @@ public class AnimalService {
         this.animalRepository = animalRepository;
     }
 
-    public List<Animal> getAllAnimals() {
-        return (List<Animal>) animalRepository.findAll();
+    public List<Animal> getAllAnimals(String sort) {
+        if (sort.toUpperCase().equals("NAME")) {
+            return animalRepository.findAllAnimalsAndSortByName();
+        } else {
+            return animalRepository.findAllAnimalsAndSortById();
+        }
     }
 
     public Animal getAnimalById(Long id) {

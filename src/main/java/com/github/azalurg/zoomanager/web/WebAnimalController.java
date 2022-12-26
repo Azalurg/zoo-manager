@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -20,8 +21,8 @@ public class WebAnimalController {
     private AnimalService animalService;
 
     @GetMapping
-    public String getAllAnimals(Model model){
-        List<Animal> animalList = this.animalService.getAllAnimals();
+    public String getAllAnimals(@RequestParam(required = false, defaultValue = "id") String sortBy, Model model){
+        List<Animal> animalList = this.animalService.getAllAnimals(sortBy);
         animalList.forEach(animal -> animal.setKeepers(animalService.getKeepersForAnimal(animal.getId())));
         model.addAttribute("animals", animalList);
         return "animals/animals";

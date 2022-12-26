@@ -4,6 +4,15 @@
 <body>
 <nav th:include="common/navbar"></nav>
 <h1>Animals</h1>
+<form method="get" action="/animals">
+    <label for="sortBy">Sort by:</label>
+    <select name="sortBy" id="sortBy" onchange="this.form.submit()">
+        <option value="id">ID</option>
+        <option value="name">Name</option>
+        <option value="specie.name">Specie</option>
+        <option value="healthCard.bornDate">Born Date</option>
+    </select>
+</form>
 <table>
     <thead>
     <tr>
@@ -11,7 +20,7 @@
         <th>Name</th>
         <th>Specie</th>
         <th>Keepers</th>
-        <th>bornDate</th>
+        <th>Born Date</th>
     </tr>
     </thead>
     <tbody>
