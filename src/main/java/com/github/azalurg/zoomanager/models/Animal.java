@@ -44,10 +44,10 @@ public class Animal {
 
 //    ------------------------------
 
-    public Animal(String name, Date adoptDate, String description){
+    public Animal(String name, Date adoptDate, Specie specie){
         this.name = name;
         this.adoptDate = adoptDate;
-        this.description = description;
+        this.specie = specie;
     }
 
     public Animal() {

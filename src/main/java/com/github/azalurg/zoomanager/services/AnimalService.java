@@ -58,5 +58,4 @@ public class AnimalService {
         animal.setKeepers(keepers);
         animalRepository.save(animal);
     }
-
 }

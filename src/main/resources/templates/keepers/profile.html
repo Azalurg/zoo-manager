@@ -9,8 +9,16 @@
     <p th:text="${keeper.email}"></p>
 
     <script th:inline="javascript">
+        function setCookie(name, value, hours) {
+          let expires = "";
+          if (hours) {
+            let date = new Date();
+            date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
       var keeperName = [[${keeper.username}]];
-      var expirationTime = new Date(Date.now() + 2 * 60 * 60 * 1000).toUTCString(); // 2 hours in the future
-      document.cookie = "keeper_name=" + keeperName + "; expires=" + expirationTime;
+      setCookie("username", keeperName, 12)
     </script>
 </body>

@@ -1,7 +1,8 @@
 <ul>
   <li><a th:href="@{/}">Home</a></li>
   <li><a th:href="@{/animals}">All Animals</a></li>
-  <li><a th:href="@{/keepers/login}">Login</a></li>
+  <li id="login"><a th:href="@{/keepers/login}">Login</a></li>
+  <li id="profile"><a th:href="@{/keepers/profile}">Profile</a></li>
 </ul>
 <ul>
   <li>
@@ -11,3 +12,22 @@
     </form>
   </li>
 </ul>
+
+<!--<script>-->
+<!--  function getCookie(name) {-->
+<!--    let nameEQ = name + "=";-->
+<!--    let ca = document.cookie.split(';');-->
+<!--    for (let i = 0; i < ca.length; i++) {-->
+<!--      let c = ca[i];-->
+<!--      while (c.charAt(0) == ' ') c = c.substring(1, c.length);-->
+<!--      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);-->
+<!--    }-->
+<!--    return null;-->
+<!--  }-->
+
+<!--  if(getCookie("username")){-->
+<!--    document.getElementById("login").style();-->
+<!--  } else {-->
+<!--    document.getElementById("profile").remove();-->
+<!--  }-->
+<!--</script>-->

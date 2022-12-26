@@ -1,82 +1,50 @@
 package com.github.azalurg.zoomanager.models;
 
+import com.sun.istack.NotNull;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
 @Entity
-//@Table(name = "Species")
 public class Specie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String name;
+
+    @NotNull
     private String description;
+
+    @NotNull
     private String type;
+
+    @NotNull
     private String food;
+
+    @NotNull
     private String habitat;
+
+    @NotNull
     private String status;
+
+    @NotNull
     private String image;
 
     public Specie() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public Specie(String name, String description, String type, String food, String habitat, String status, String image) {
         this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
         this.type = type;
-    }
-
-    public String getFood() {
-        return food;
-    }
-
-    public void setFood(String food) {
         this.food = food;
-    }
-
-    public String getHabitat() {
-        return habitat;
-    }
-
-    public void setHabitat(String habitat) {
         this.habitat = habitat;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
         this.image = image;
     }
 

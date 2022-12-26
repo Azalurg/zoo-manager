@@ -9,6 +9,7 @@
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Specie</th>
         <th>Description</th>
         <th>Keepers</th>
     </tr>
@@ -17,7 +18,7 @@
     <tr th:each="animal : ${animals}">
         <td th:text="${animal.id}"></td>
         <td th:text="${animal.name}"></td>
-        <td th:text="${animal.description}"></td>
+        <td th:text="${animal.specie.name}"></td>
         <td>
             <span th:each="keeper : ${animal.keepers}" th:text="${keeper.name}"></span>
         </td>
