@@ -30,7 +30,7 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private HealthCardService healthCardService;
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     private Date getRandomDate() {
         Calendar calendar = Calendar.getInstance();
@@ -44,16 +44,16 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Create spices
-        Specie specie1 = new Specie("Lion", "Large carnivorous mammal", "Mammal", "Meat", "Savannah", "Vulnerable", "https://image.com/lion.jpg");
-        Specie specie2 = new Specie("Gorilla", "Large ape", "Mammal", "Plants", "Rainforest", "Endangered", "https://image.com/gorilla.jpg");
-        Specie specie3 = new Specie("Penguin", "Aquatic bird", "Bird", "Fish", "Antarctica", "Least Concern", "https://image.com/penguin.jpg");
-        Specie specie4 = new Specie("Cheetah", "Fastest land animal", "Mammal", "Meat", "Savannah", "Vulnerable", "https://image.com/cheetah.jpg");
-        Specie specie5 = new Specie("Panda", "Symbol of peace", "Mammal", "Bamboo", "Mountainous regions", "Endangered", "https://image.com/panda.jpg");
-        Specie specie6 = new Specie("Kangaroo", "A national symbol of Australia", "Mammal", "Plants", "Australia", "Least Concern", "https://image.com/kangaroo.jpg");
-        Specie specie7 = new Specie("Otter", "Semi-aquatic mammal", "Mammal", "Fish", "Coastal areas", "Vulnerable", "https://image.com/otter.jpg");
-        Specie specie8 = new Specie("Toucan", "Brightly colored bird", "Bird", "Fruit", "Tropical rainforest", "Least Concern", "https://image.com/toucan.jpg");
-        Specie specie9 = new Specie("Giraffe", "Tallest living terrestrial animal", "Mammal", "Leaves", "Savannah", "Vulnerable", "https://image.com/giraffe.jpg");
-        Specie specie10 = new Specie("Pelican", "Large waterbird", "Bird", "Fish", "Coastal areas", "Least Concern", "https://image.com/pelican.jpg");
+        Specie specie1 = new Specie("Lion", "Large carnivorous mammal", "Mammal", "Meat", "Savannah", "Vulnerable", "https://images.pexels.com/photos/2220337/pexels-photo-2220337.jpeg");
+        Specie specie2 = new Specie("Gorilla", "Large ape", "Mammal", "Plants", "Rainforest", "Endangered", "https://images.pexels.com/photos/913652/pexels-photo-913652.jpeg");
+        Specie specie3 = new Specie("Penguin", "Aquatic bird", "Bird", "Fish", "Antarctica", "Least Concern", "https://images.pexels.com/photos/209096/pexels-photo-209096.jpeg");
+        Specie specie4 = new Specie("Cheetah", "Fastest land animal", "Mammal", "Meat", "Savannah", "Vulnerable", "https://images.pexels.com/photos/2793479/pexels-photo-2793479.jpeg");
+        Specie specie5 = new Specie("Panda", "Symbol of peace", "Mammal", "Bamboo", "Mountainous regions", "Endangered", "https://images.pexels.com/photos/1661535/pexels-photo-1661535.jpeg");
+        Specie specie6 = new Specie("Kangaroo", "A national symbol of Australia", "Mammal", "Plants", "Australia", "Least Concern", "https://images.pexels.com/photos/2573494/pexels-photo-2573494.jpeg");
+        Specie specie7 = new Specie("Otter", "Semi-aquatic mammal", "Mammal", "Fish", "Coastal areas", "Vulnerable", "https://images.pexels.com/photos/53510/head-details-otter-close-up-53510.jpeg");
+        Specie specie8 = new Specie("Toucan", "Brightly colored bird", "Bird", "Fruit", "Tropical rainforest", "Least Concern", "https://images.pexels.com/photos/12187520/pexels-photo-12187520.jpeg");
+        Specie specie9 = new Specie("Giraffe", "Tallest living terrestrial animal", "Mammal", "Leaves", "Savannah", "Vulnerable", "https://images.pexels.com/photos/34098/south-africa-hluhluwe-giraffes-pattern.jpg");
+        Specie specie10 = new Specie("Pelican", "Large waterbird", "Bird", "Fish", "Coastal areas", "Least Concern", "https://images.pexels.com/photos/158986/pexels-photo-158986.jpeg");
         specieService.createSpecie(specie1);
         specieService.createSpecie(specie2);
         specieService.createSpecie(specie3);
