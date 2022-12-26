@@ -3,5 +3,5 @@
 ## Todo:
 - [ ] Cookies
 - [X] Relation betwen Keeper and Animal
-- [ ] Species
-- [ ] HealthCard
+- [X] Species
+- [X] HealthCard

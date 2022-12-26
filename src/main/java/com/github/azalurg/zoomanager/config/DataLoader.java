@@ -1,9 +1,11 @@
 package com.github.azalurg.zoomanager.config;
 
 import com.github.azalurg.zoomanager.models.Animal;
+import com.github.azalurg.zoomanager.models.HealthCard;
 import com.github.azalurg.zoomanager.models.Keeper;
 import com.github.azalurg.zoomanager.models.Specie;
 import com.github.azalurg.zoomanager.services.AnimalService;
+import com.github.azalurg.zoomanager.services.HealthCardService;
 import com.github.azalurg.zoomanager.services.KeeperService;
 import com.github.azalurg.zoomanager.services.SpecieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,19 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private SpecieService specieService;
 
+    @Autowired
+    private HealthCardService healthCardService;
+
     private Random random = new Random();
+
+    private Date getRandomDate() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, 1950 + random.nextInt(50));
+        calendar.set(Calendar.MONTH, random.nextInt(12));
+        calendar.set(Calendar.DAY_OF_MONTH, 1 + random.nextInt(calendar.getActualMaximum(Calendar.DAY_OF_MONTH)));
+
+        return calendar.getTime();
+    }
 
     @Override
     public void run(String... args) throws Exception {
@@ -91,7 +105,16 @@ public class DataLoader implements CommandLineRunner {
         List<Animal> animals = new ArrayList<>();
         namesList.forEach(name -> {
             int s = this.random.nextInt(10);
-            animals.add(animalService.createAnimal(new Animal(name, new Date(), species.get(s))));
+            HealthCard h = new HealthCard(
+                    (long) Math.round(this.random.nextLong()*100000),
+                    "",
+                    (float) (Math.round(this.random.nextFloat()*10000)/100),
+                    (float) (Math.round(this.random.nextFloat()*10000)/100),
+                    (float) (Math.round(this.random.nextFloat()*10000)/100),
+                    this.random.nextBoolean(),
+                    getRandomDate());
+            healthCardService.createHealthCard(h);
+            animals.add(animalService.createAnimal(new Animal(name, new Date(), species.get(s), h)));
         });
 
         // Add animals to keepers

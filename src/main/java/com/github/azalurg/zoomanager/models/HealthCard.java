@@ -1,83 +1,51 @@
 package com.github.azalurg.zoomanager.models;
 
+import com.sun.istack.NotNull;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
+@Getter
+@Setter
 @Entity
-//@Table(name = "HealthCards")
 public class HealthCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private Long pesez;
+
+    @NotNull
     private String description;
+
+    @NotNull
     private Float weight;
+
+    @NotNull
     private Float height;
+
+    @NotNull
     private Float length;
+
+    @NotNull
     private Boolean gender;
+
+    @NotNull
     private Date bornDate;
 
     public HealthCard() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Long getPesez() {
-        return pesez;
-    }
-
-    public void setPesez(Long pesez) {
+    public HealthCard(Long pesez, String description, Float weight, Float height, Float length, Boolean gender, Date bornDate) {
         this.pesez = pesez;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Float getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Float weight) {
         this.weight = weight;
-    }
-
-    public Float getHeight() {
-        return height;
-    }
-
-    public void setHeight(Float height) {
         this.height = height;
-    }
-
-    public Float getLength() {
-        return length;
-    }
-
-    public void setLength(Float length) {
         this.length = length;
-    }
-
-    public Boolean getGender() {
-        return gender;
-    }
-
-    public void setGender(Boolean gender) {
         this.gender = gender;
-    }
-
-    public Date getBornDate() {
-        return bornDate;
-    }
-
-    public void setBornDate(Date bornDate) {
         this.bornDate = bornDate;
     }
 
