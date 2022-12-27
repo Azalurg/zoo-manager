@@ -23,10 +23,17 @@ public class AnimalService {
     }
 
     public List<Animal> getAllAnimals(String sort) {
-        if (sort.toUpperCase().equals("NAME")) {
-            return animalRepository.findAllAnimalsAndSortByName();
-        } else {
-            return animalRepository.findAllAnimalsAndSortById();
+        sort = sort.toUpperCase();
+
+        switch (sort){
+            case "NAME":
+                return animalRepository.findAllAnimalsAndSortByName();
+            case "BORN_DATE":
+                return animalRepository.findAllAnimalsAndSortByBornDate();
+            case "SPECIE":
+                return animalRepository.findAllAnimalsAndSortBySpecie();
+            default:
+                return animalRepository.findAllAnimalsAndSortById();
         }
     }
 

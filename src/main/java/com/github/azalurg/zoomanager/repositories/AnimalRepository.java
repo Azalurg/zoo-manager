@@ -2,7 +2,6 @@ package com.github.azalurg.zoomanager.repositories;
 
 import com.github.azalurg.zoomanager.models.Animal;
 import com.github.azalurg.zoomanager.models.Keeper;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -20,4 +19,10 @@ public interface AnimalRepository extends CrudRepository<Animal, Long> {
 
     @Query("SELECT a FROM Animal a ORDER BY a.id")
     List<Animal> findAllAnimalsAndSortById();
+
+    @Query("SELECT a, h.bornDate FROM Animal a JOIN a.healthCard h ORDER BY h.bornDate")
+    List<Animal> findAllAnimalsAndSortByBornDate();
+
+    @Query("SELECT a, s.name FROM Animal a JOIN a.specie s ORDER BY s.name")
+    List<Animal> findAllAnimalsAndSortBySpecie();
 }

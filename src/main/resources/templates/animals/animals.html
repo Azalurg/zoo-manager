@@ -9,8 +9,8 @@
     <select name="sortBy" id="sortBy" onchange="this.form.submit()">
         <option value="id">ID</option>
         <option value="name">Name</option>
-        <option value="specie.name">Specie</option>
-        <option value="healthCard.bornDate">Born Date</option>
+        <option value="specie">Specie</option>
+        <option value="born_date">Born Date</option>
     </select>
 </form>
 <table>
@@ -37,5 +37,22 @@
     </tr>
     </tbody>
 </table>
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("sortBy");
+    let index = 0
+    switch (name){
+        case "name":
+            index = 1
+            break;
+        case "specie":
+            index = 2
+            break;
+        case "born_date":
+            index = 3
+            break;
+    }
+    document.getElementById("sortBy").selectedIndex = index;
+</script>
 </body>
 </html>

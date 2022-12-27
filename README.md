@@ -6,7 +6,7 @@
   - [ ] Posiblity to add animal
   - [ ] Posiblity to edit animal
   - [ ] Posiblity to delete animal
-- [ ] Sorting
+- [X] Sorting
 - [ ] Style
 - [ ] Statistic that use JOIN and GROUP BY
 - [ ] Search
