@@ -10,8 +10,22 @@ import java.math.BigInteger;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class Counter {
-    private BigInteger id;
+    private long id;
     private BigInteger amount;
+
+    public Counter(BigInteger id, BigInteger amount) {
+        this.id = id.longValue();
+        this.amount = amount;
+    }
+
+    public Counter(long id, BigInteger amount) {
+        this.id = id;
+        this.amount = amount;
+    }
+
+    public void setId(BigInteger id) {
+        this.id = id.longValue();
+    }
 }

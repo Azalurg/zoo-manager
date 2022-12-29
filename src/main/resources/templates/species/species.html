@@ -9,9 +9,9 @@
         <th>Specie</th>
         <th>Count</th>
     </tr>
-    <tr th:each="c : ${counter}">
-        <td th:text="${c.id}"></td>
-        <td th:text="${c.amount}"></td>
+    <tr th:each="sc : ${specieCounter}">
+        <td th:text="${sc.specie.name}"></td>
+        <td th:text="${sc.amount}"></td>
     </tr>
 </table>
 </body>
