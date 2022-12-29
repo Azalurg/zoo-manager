@@ -12,7 +12,7 @@
             <option value="id">ID</option>
             <option value="name">Name</option>
             <option value="specie">Specie</option>
-            <option value="born_date">Born Date</option>
+            <option value="born_date">Age</option>
         </select>
     </form>
     <table id="animals-list">
@@ -22,7 +22,7 @@
             <th>Name</th>
             <th>Specie</th>
             <th>Keepers</th>
-            <th>Born Date</th>
+            <th>Age</th>
         </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@
             <td>
                 <span th:each="keeper : ${animal.keepers}" th:text="${keeper.name}"></span>
             </td>
-            <td th:text="${animal.healthCard.bornDate}"></td>
+            <td th:text="${#dates.year(#dates.createNow()) - #dates.year(animal.healthCard.bornDate)}"></td>
         </tr>
         </tbody>
     </table>
