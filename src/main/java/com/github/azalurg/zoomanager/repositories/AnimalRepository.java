@@ -25,4 +25,21 @@ public interface AnimalRepository extends CrudRepository<Animal, Long> {
 
     @Query("SELECT a, s.name FROM Animal a JOIN a.specie s ORDER BY s.name")
     List<Animal> findAllAnimalsAndSortBySpecie();
+
+    @Query(value = "SELECT s.id as specie, COUNT(*) as count FROM ANIMAL a inner JOIN SPECIE s ON s.id = a.specie_id GROUP BY s.id ORDER BY specie", nativeQuery = true)
+    List<Object[]> findAnimalCountBySpecie();
+
+
+//    @Query("select new com.github.azalurg.zoomanager.repositories.Counter(s.name, count(a)) from Animal a inner join Specie s on a.id = a.specie_id group by s.name")
+//    List<Counter> findAnimalCountBySpecie();
+
+//    @Query("SELECT s.name as specieName, COUNT(a.id) as animalCount " +
+//            "FROM Specie s " +
+//            "LEFT JOIN Animal a ON s.id = a.specie_id " +
+//            "GROUP BY s.id")
+//    List<Counter> findAnimalCountBySpecie();
 }
+//    SELECT s.name as Name, COUNT(*)
+//        FROM ANIMAL a
+//        inner JOIN SPECIE s ON s.id = a.specie_id
+//        GROUP BY s.id

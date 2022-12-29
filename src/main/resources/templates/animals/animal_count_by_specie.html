@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:include="common/head.html"/>
+<body>
+<nav th:include="common/navbar"></nav>
+<h1>Animals</h1>
+<table>
+    <tr>
+        <th>Specie</th>
+        <th>Count</th>
+    </tr>
+    <tr th:each="c : ${counter}">
+        <td th:text="${c.id}"></td>
+        <td th:text="${c.amount}"></td>
+    </tr>
+</table>
+</body>
+</html>

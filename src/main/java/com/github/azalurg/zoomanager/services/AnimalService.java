@@ -1,15 +1,16 @@
 package com.github.azalurg.zoomanager.services;
 
 import com.github.azalurg.zoomanager.api.ResourceNotFoundException;
+import com.github.azalurg.zoomanager.custom.Counter;
 import com.github.azalurg.zoomanager.models.Animal;
 import com.github.azalurg.zoomanager.models.Keeper;
 import com.github.azalurg.zoomanager.repositories.AnimalRepository;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 @Service
@@ -70,5 +71,16 @@ public class AnimalService {
         keepers.add(keeper);
         animal.setKeepers(keepers);
         animalRepository.save(animal);
+    }
+
+    public List<Counter> getAnimalCountBySpecie() {
+        List<Counter> sc = new ArrayList<>();
+        animalRepository.findAnimalCountBySpecie().forEach(x -> {
+            Counter s = new Counter();
+            s.setId((BigInteger) x[0]);
+            s.setAmount((BigInteger) x[1]);
+            sc.add(s);
+        });
+        return sc;
     }
 }

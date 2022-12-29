@@ -1,9 +1,10 @@
 package com.github.azalurg.zoomanager.web;
 
+import com.github.azalurg.zoomanager.custom.Counter;
 import com.github.azalurg.zoomanager.models.Animal;
-import com.github.azalurg.zoomanager.models.Keeper;
-import com.github.azalurg.zoomanager.repositories.AnimalRepository;
+import com.github.azalurg.zoomanager.models.Specie;
 import com.github.azalurg.zoomanager.services.AnimalService;
+import com.github.azalurg.zoomanager.services.SpecieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,19 @@ public class WebAnimalController {
     @Autowired
     private AnimalService animalService;
 
+    @Autowired
+    private SpecieService specieService;
+
     @GetMapping
+    public String getAnimalCountBySpecie(Model model) {
+        List<Counter> animalCountBySpecieList = animalService.getAnimalCountBySpecie();
+        List<Specie> species = specieService.getAll();
+
+        model.addAttribute("counter", animalCountBySpecieList);
+        return "animals/animal_count_by_specie";
+    }
+
+    @GetMapping("/all")
     public String getAllAnimals(@RequestParam(required = false, defaultValue = "id") String sortBy, Model model){
         List<Animal> animalList = this.animalService.getAllAnimals(sortBy);
         animalList.forEach(animal -> animal.setKeepers(animalService.getKeepersForAnimal(animal.getId())));
