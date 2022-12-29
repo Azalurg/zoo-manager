@@ -3,10 +3,13 @@
 <head th:include="common/head.html"/>
 <body>
     <nav th:include="common/navbar"></nav>
-    <h1 th:text="${keeper.name}"></h1>
-    <p th:text="${keeper.surname}"></p>
-    <p th:text="${keeper.address}"></p>
-    <p th:text="${keeper.email}"></p>
+    
+    <div class="profile content">
+      <h1 th:text="${keeper.name}"></h1>
+      <p th:text="${keeper.surname}"></p>
+      <p th:text="${keeper.address}"></p>
+      <p th:text="${keeper.email}"></p>
+    </div>
 
     <script th:inline="javascript">
         function setCookie(name, value, hours) {

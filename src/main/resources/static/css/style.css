@@ -1,0 +1,114 @@
+:root {
+  --background: #37465b;
+  --background-alt: #212b38;
+  --accent: #5affe7;
+  --accent-alt: #0bc6ab;
+  --secondary: #726eff;
+  --foreground: white;
+  --foreground-alt: #ddd;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  margin: 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--accent-alt);
+  text-decoration: underline;
+}
+
+/* species-list */
+
+.species-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.species-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.species-avatar {
+  max-height: 200px;
+}
+
+.species-description {
+  font-size: 1.5rem;
+}
+
+/* NAVBAR */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--background-alt);
+  padding: 1rem;
+}
+
+nav>ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav>ul>li {
+  padding: 0.25rem 0.75rem;
+}
+
+/* CONTENT */
+
+.content {
+  display: block;
+  margin: auto;
+  width: 75%;
+  text-align: center;
+}
+
+/* TABLE */
+
+#animals-list {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#animals-list td,
+#animals-list th {
+  border: 1px solid var(--foreground);
+  padding: 8px;
+
+}
+
+#animals-list tr {
+  background-color: #2d3a4f;
+}
+
+#animals-list tr:nth-child(even) {
+  background-color: var(--background);
+}
+
+#animals-list tr:hover {
+  background-color: var(--background-alt);
+}
+
+#animals-list th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--secondary);
+  color: var(--foreground);
+}

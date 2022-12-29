@@ -44,16 +44,16 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Create spices
-        Specie specie1 = new Specie("Lion", "Large carnivorous mammal", "Mammal", "Meat", "Savannah", "Vulnerable", "https://images.pexels.com/photos/2220337/pexels-photo-2220337.jpeg");
-        Specie specie2 = new Specie("Gorilla", "Large ape", "Mammal", "Plants", "Rainforest", "Endangered", "https://images.pexels.com/photos/913652/pexels-photo-913652.jpeg");
-        Specie specie3 = new Specie("Penguin", "Aquatic bird", "Bird", "Fish", "Antarctica", "Least Concern", "https://images.pexels.com/photos/209096/pexels-photo-209096.jpeg");
-        Specie specie4 = new Specie("Cheetah", "Fastest land animal", "Mammal", "Meat", "Savannah", "Vulnerable", "https://images.pexels.com/photos/2793479/pexels-photo-2793479.jpeg");
-        Specie specie5 = new Specie("Panda", "Symbol of peace", "Mammal", "Bamboo", "Mountainous regions", "Endangered", "https://images.pexels.com/photos/1661535/pexels-photo-1661535.jpeg");
-        Specie specie6 = new Specie("Kangaroo", "A national symbol of Australia", "Mammal", "Plants", "Australia", "Least Concern", "https://images.pexels.com/photos/2573494/pexels-photo-2573494.jpeg");
-        Specie specie7 = new Specie("Otter", "Semi-aquatic mammal", "Mammal", "Fish", "Coastal areas", "Vulnerable", "https://images.pexels.com/photos/53510/head-details-otter-close-up-53510.jpeg");
-        Specie specie8 = new Specie("Toucan", "Brightly colored bird", "Bird", "Fruit", "Tropical rainforest", "Least Concern", "https://images.pexels.com/photos/12187520/pexels-photo-12187520.jpeg");
-        Specie specie9 = new Specie("Giraffe", "Tallest living terrestrial animal", "Mammal", "Leaves", "Savannah", "Vulnerable", "https://images.pexels.com/photos/34098/south-africa-hluhluwe-giraffes-pattern.jpg");
-        Specie specie10 = new Specie("Pelican", "Large waterbird", "Bird", "Fish", "Coastal areas", "Least Concern", "https://images.pexels.com/photos/158986/pexels-photo-158986.jpeg");
+        Specie specie1 = new Specie("Lion", "Large carnivorous mammal", "Mammal", "Meat", "Savannah", "Vulnerable", "https://images.pexels.com/photos/2220337/pexels-photo-2220337.jpeg?auto=compress&cs=tinysrgb&w=1280&h=720&dpr=1");
+        Specie specie2 = new Specie("Gorilla", "Large ape", "Mammal", "Plants", "Rainforest", "Endangered", "https://images.pexels.com/photos/913652/pexels-photo-913652.jpeg?auto=compress&cs=tinysrgb&w=1280&h=720&dpr=1");
+        Specie specie3 = new Specie("Penguin", "Aquatic bird", "Bird", "Fish", "Antarctica", "Least Concern", "https://images.pexels.com/photos/209096/pexels-photo-209096.jpeg?auto=compress&cs=tinysrgb&w=1280&h=720&dpr=1");
+        Specie specie4 = new Specie("Cheetah", "Fastest land animal", "Mammal", "Meat", "Savannah", "Vulnerable", "https://images.pexels.com/photos/2793479/pexels-photo-2793479.jpeg?auto=compress&cs=tinysrgb&w=1280&h=720&dpr=1");
+        Specie specie5 = new Specie("Panda", "Symbol of peace", "Mammal", "Bamboo", "Mountainous regions", "Endangered", "https://images.pexels.com/photos/1661535/pexels-photo-1661535.jpeg?auto=compress&cs=tinysrgb&w=1280&h=720&dpr=1");
+        Specie specie6 = new Specie("Kangaroo", "A national symbol of Australia", "Mammal", "Plants", "Australia", "Least Concern", "https://images.pexels.com/photos/2573494/pexels-photo-2573494.jpeg?auto=compress&cs=tinysrgb&w=1280&h=720&dpr=1");
+        Specie specie7 = new Specie("Otter", "Semi-aquatic mammal", "Mammal", "Fish", "Coastal areas", "Vulnerable", "https://images.pexels.com/photos/53510/head-details-otter-close-up-53510.jpeg?auto=compress&cs=tinysrgb&w=1280&h=720&dpr=1");
+        Specie specie8 = new Specie("Toucan", "Brightly colored bird", "Bird", "Fruit", "Tropical rainforest", "Least Concern", "https://images.pexels.com/photos/12187520/pexels-photo-12187520.jpeg?auto=compress&cs=tinysrgb&w=1280&h=720&dpr=1");
+        Specie specie9 = new Specie("Giraffe", "Tallest living terrestrial animal", "Mammal", "Leaves", "Savannah", "Vulnerable", "https://images.pexels.com/photos/34098/south-africa-hluhluwe-giraffes-pattern.jpg?auto=compress&cs=tinysrgb&w=1280&h=720&dpr=1");
+        Specie specie10 = new Specie("Pelican", "Large waterbird", "Bird", "Fish", "Coastal areas", "Least Concern", "https://images.pexels.com/photos/158986/pexels-photo-158986.jpeg?auto=compress&cs=tinysrgb&w=1280&h=720&dpr=1");
         specieService.createSpecie(specie1);
         specieService.createSpecie(specie2);
         specieService.createSpecie(specie3);

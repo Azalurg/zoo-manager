@@ -2,17 +2,18 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:include="common/head.html"/>
 <body>
-<nav th:include="common/navbar"></nav>
-<h1>Animals</h1>
-<table>
-    <tr>
-        <th>Specie</th>
-        <th>Count</th>
-    </tr>
-    <tr th:each="sc : ${specieCounter}">
-        <td th:text="${sc.specie.name}"></td>
-        <td th:text="${sc.amount}"></td>
-    </tr>
-</table>
+    <nav th:include="common/navbar"></nav>
+    <div class="content">
+        <h1>Animals</h1>
+        <div class="species-list">
+            <div th:each="sc : ${specieCounter}" class="species-container">
+                <img th:src="${sc.specie.image}" alt="Animal image" class="species-avatar" />
+                <div class="species-description">
+                    <span th:text="${sc.specie.name}"></span> (<span th:text="${sc.amount}"></span>)
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>
