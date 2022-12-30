@@ -8,7 +8,7 @@
   - [ ] Posiblity to delete animal
 - [X] Sorting
 - [ ] Style
-- [ ] Statistic that use JOIN and GROUP BY
+- [X] Statistic that use JOIN and GROUP BY
 - [ ] Search
 - [ ] Filtering
 - [ ] <u>CRUD API</u>
