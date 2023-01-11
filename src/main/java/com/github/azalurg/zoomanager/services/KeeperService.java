@@ -31,7 +31,8 @@ public class KeeperService {
         return keeperRepository.save(keeper);
     }
 
-    public Keeper updateKeeper(Long id, Keeper keeper) {
+    public Keeper updateKeeper(Keeper keeper) {
+        Long id = keeper.getId();
         Keeper existingKeeper = getKeeperById(id);
         existingKeeper.setName(keeper.getName());
         existingKeeper.setSurname(keeper.getSurname());

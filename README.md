@@ -21,6 +21,7 @@
     - [ ] Sending emails
     - [ ] Use of reactive programming paradigm
     - [ ] Deployment of the application to an external server (e.g. Heroku)
+- [ ] Add custom on submit in all animals list
 
 
 ## Done

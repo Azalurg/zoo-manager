@@ -10,7 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import java.util.Objects;
+
+import static com.github.azalurg.zoomanager.custom.RandomId.randomString;
 
 @Controller
 @RequestMapping("/keepers")
@@ -26,28 +31,31 @@ public class WebKeeperController {
     }
 
     @GetMapping("/profile")
-    public String profile(Model model, HttpSession session) {
-        // get logged-in keeper from the session attribute
-        Keeper keeper = (Keeper) session.getAttribute("loggedInUser");
-        if (keeper != null){
-            model.addAttribute("keeper", keeper);
-            return "keepers/profile";
+    public String profile(@RequestParam(required = false, defaultValue = "") String sessionKey, Model model, HttpSession session) {
+
+        if (!Objects.equals(sessionKey, "")) {
+            // check if the session key is valid
+            Keeper keeper = (Keeper) session.getAttribute(sessionKey);
+            if (keeper != null) {
+                model.addAttribute("keeper", keeper);
+                return "keepers/profile";
+            }
         }
-        else{
-            model.addAttribute("errorMessage", "You are not login in!");
-            return "common/error";
-        }
+
+        model.addAttribute("error", "Session key is invalid");
+        return "keepers/login";
     }
 
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model model, HttpSession session) {
         Keeper keeper = keeperService.findByUsername(username);
+
         if (keeper != null && password.equals(keeper.getPassword())) {
-            // login successful, store the logged-in keeper in a session attribute
-            session.setAttribute("loggedInUser", keeper);
-            return "redirect:/keepers/profile";
+            String sessionKey = randomString(16);
+            session.setAttribute(sessionKey, keeper);
+            model.addAttribute("sessionKey", sessionKey);
+            return "/keepers/setSession";
         } else {
-            // login failed
             model.addAttribute("error", "Invalid username or password");
             return "keepers/login";
         }
