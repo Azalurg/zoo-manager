@@ -5,6 +5,7 @@ import com.github.azalurg.zoomanager.custom.Counter;
 import com.github.azalurg.zoomanager.models.Animal;
 import com.github.azalurg.zoomanager.models.Keeper;
 import com.github.azalurg.zoomanager.repositories.AnimalRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,15 +13,31 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Service
 @Transactional
 public class AnimalService {
 
-    private final AnimalRepository animalRepository;
+    @Autowired
+    private AnimalRepository animalRepository;
 
-    public AnimalService(AnimalRepository animalRepository) {
-        this.animalRepository = animalRepository;
+    @Autowired
+    private KeeperService keeperService;
+
+    public List<Animal> findAll(){
+        return (List<Animal>) animalRepository.findAll();
+    }
+
+    public Animal findById(Long id) {
+        return animalRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Animal not found"));
+    }
+
+    public Animal addKeeper(Long id, Long keeperId) {
+        Animal animal = findById(id);
+        Keeper keeper = keeperService.findById(keeperId);
+        animal.addKeeper(keeper);
+        return animalRepository.save(animal);
     }
 
     public List<Animal> getAllAnimals(String sort) {
@@ -38,16 +55,13 @@ public class AnimalService {
         }
     }
 
-    public Animal getAnimalById(Long id) {
-        return animalRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Animal not found"));
-    }
 
     public Animal createAnimal(Animal animal) {
         return animalRepository.save(animal);
     }
 
     public Animal updateAnimal(Long id, Animal animal) {
-        Animal existingAnimal = getAnimalById(id);
+        Animal existingAnimal = findById(id);
         existingAnimal.setName(animal.getName());
         existingAnimal.setDescription(animal.getDescription());
         return animalRepository.save(existingAnimal);
@@ -57,19 +71,12 @@ public class AnimalService {
         animalRepository.deleteById(id);
     }
 
-    public List<Keeper> getKeepersForAnimal(Long animalId) {
+    public Set<Keeper> getKeepersForAnimal(Long animalId) {
         return animalRepository.findKeepersByAnimalId(animalId);
     }
 
     public void addKeeperToAnimal(Animal animal, Keeper keeper) {
-        List<Keeper> keepers = animalRepository.findKeepersByAnimalId(animal.getId());
-        for (Keeper k : keepers) {
-            if (Objects.equals(k.getId(), keeper.getId())) {
-                return;
-            }
-        }
-        keepers.add(keeper);
-        animal.setKeepers(keepers);
+        animal.addKeeper(keeper);
         animalRepository.save(animal);
     }
 
@@ -83,4 +90,6 @@ public class AnimalService {
         });
         return sc;
     }
+
+
 }

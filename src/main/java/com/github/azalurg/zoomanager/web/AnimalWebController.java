@@ -34,7 +34,7 @@ public class AnimalWebController {
 
     @GetMapping("/{id}")
     public String getAnimalById(@PathVariable Long id, Model model) {
-        Animal animal = animalService.getAnimalById(id);
+        Animal animal = animalService.findById(id);
         animal.setKeepers(animalService.getKeepersForAnimal(id));
         model.addAttribute("animal", animal);
         return "animals/animal";

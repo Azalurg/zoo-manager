@@ -1,5 +1,6 @@
 package com.github.azalurg.zoomanager.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,8 +20,9 @@ public class Keeper {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "keepers")
-    private List<Animal> animals;
+    private Set<Animal> animals = new HashSet<>();
 
     @NotNull
     private String name;
@@ -31,7 +33,9 @@ public class Keeper {
     @NotNull
     private String address;
 
+    @NotNull
     private String phone;
+
     @NotNull
     private String email;
 

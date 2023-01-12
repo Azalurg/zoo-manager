@@ -10,11 +10,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface AnimalRepository extends CrudRepository<Animal, Long> {
     @Query("SELECT k FROM Keeper k JOIN k.animals a WHERE a.id = :animalId")
-    List<Keeper> findKeepersByAnimalId(@Param("animalId") Long animalId);
+    Set<Keeper> findKeepersByAnimalId(@Param("animalId") Long animalId);
 
     @Query("SELECT a FROM Animal a ORDER BY a.name")
     List<Animal> findAllAnimalsAndSortByName();
