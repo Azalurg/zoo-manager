@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import java.util.Objects;
@@ -19,7 +18,7 @@ import static com.github.azalurg.zoomanager.custom.RandomId.randomString;
 
 @Controller
 @RequestMapping("/keepers")
-public class WebKeeperController {
+public class KeeperWebController {
 
     @Autowired
     private KeeperService keeperService;
