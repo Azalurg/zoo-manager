@@ -26,7 +26,7 @@ public class AnimalService {
     private KeeperService keeperService;
 
     public List<Animal> findAll(){
-        return (List<Animal>) animalRepository.findAll();
+        return animalRepository.findAll();
     }
 
     public Animal findById(Long id) {

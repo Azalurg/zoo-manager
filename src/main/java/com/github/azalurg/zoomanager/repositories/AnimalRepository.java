@@ -14,6 +14,9 @@ import java.util.Set;
 
 @Repository
 public interface AnimalRepository extends CrudRepository<Animal, Long> {
+    @Query("SELECT a FROM Animal a JOIN FETCH a.keepers k")
+    List<Animal> findAll();
+
     @Query("SELECT k FROM Keeper k JOIN k.animals a WHERE a.id = :animalId")
     Set<Keeper> findKeepersByAnimalId(@Param("animalId") Long animalId);
 
