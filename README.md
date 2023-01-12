@@ -2,10 +2,10 @@
 
 ## Todo:
 - [ ] Cookies
-  - [ ] Healtharc visible when login
-  - [ ] Posiblity to add animal
-  - [ ] Posiblity to edit animal
-  - [ ] Posiblity to delete animal
+  - [ ] Healthcare visible when login
+  - [ ] Possibility to add animal
+  - [ ] Possibility to edit animal
+  - [ ] Possibility to delete animal
 - [X] Sorting
 - [ ] Style
 - [X] Statistic that use JOIN and GROUP BY
@@ -25,6 +25,6 @@
 
 
 ## Done
-- [X] Relation betwen Keeper and Animal
+- [X] Relation between Keeper and Animal
 - [X] Species
 - [X] HealthCard
