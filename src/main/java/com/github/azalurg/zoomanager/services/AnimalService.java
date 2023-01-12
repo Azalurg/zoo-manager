@@ -3,6 +3,7 @@ package com.github.azalurg.zoomanager.services;
 import com.github.azalurg.zoomanager.api.ResourceNotFoundException;
 import com.github.azalurg.zoomanager.custom.Counter;
 import com.github.azalurg.zoomanager.models.Animal;
+import com.github.azalurg.zoomanager.models.HealthCard;
 import com.github.azalurg.zoomanager.models.Keeper;
 import com.github.azalurg.zoomanager.repositories.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,9 @@ public class AnimalService {
     @Autowired
     private KeeperService keeperService;
 
+    @Autowired
+    private HealthCardService healthCardService;
+
     public List<Animal> findAll(){
         return animalRepository.findAll();
     }
@@ -37,6 +41,13 @@ public class AnimalService {
         Animal animal = findById(id);
         Keeper keeper = keeperService.findById(keeperId);
         animal.addKeeper(keeper);
+        return animalRepository.save(animal);
+    }
+
+    public Animal setHealthCard(Long id, Long healthCardId) {
+        Animal animal = findById(id);
+        HealthCard healthCard = healthCardService.findById(healthCardId);
+        animal.setHealthCard(healthCard);
         return animalRepository.save(animal);
     }
 
@@ -90,6 +101,4 @@ public class AnimalService {
         });
         return sc;
     }
-
-
 }

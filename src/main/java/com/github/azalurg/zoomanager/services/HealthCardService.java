@@ -3,6 +3,7 @@ package com.github.azalurg.zoomanager.services;
 import com.github.azalurg.zoomanager.api.ResourceNotFoundException;
 import com.github.azalurg.zoomanager.models.HealthCard;
 import com.github.azalurg.zoomanager.repositories.HealthCardRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,17 +12,14 @@ import java.util.List;
 @Service
 @Transactional
 public class HealthCardService {
-    private final HealthCardRepository healthCardRepository;
+    @Autowired
+    private HealthCardRepository healthCardRepository;
 
-    public HealthCardService(HealthCardRepository healthCardRepository) {
-        this.healthCardRepository = healthCardRepository;
-    }
-
-    public List<HealthCard> getAllHealthCards() {
+    public List<HealthCard> findAll() {
         return (List<HealthCard>) healthCardRepository.findAll();
     }
 
-    public HealthCard getHealthCardById(Long id) {
+    public HealthCard findById(Long id) {
         return healthCardRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("HealthCard not found"));
     }
 

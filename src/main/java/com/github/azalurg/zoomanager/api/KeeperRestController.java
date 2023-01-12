@@ -27,4 +27,6 @@ public class KeeperRestController {
     public Keeper createKeeper(@RequestBody Keeper keeper) {
         return keeperService.createKeeper(keeper);
     }
+
+    //Todo: add put and delete methods
 }

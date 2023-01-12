@@ -2,7 +2,9 @@ package com.github.azalurg.zoomanager.models;
 
 import com.sun.istack.NotNull;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +12,8 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
+@ToString
+@NoArgsConstructor
 public class HealthCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +40,6 @@ public class HealthCard {
     @NotNull
     private Date bornDate;
 
-    public HealthCard() {
-    }
-
     public HealthCard(Long pesez, String description, Float weight, Float height, Float length, Boolean gender, Date bornDate) {
         this.pesez = pesez;
         this.description = description;
@@ -47,19 +48,5 @@ public class HealthCard {
         this.length = length;
         this.gender = gender;
         this.bornDate = bornDate;
-    }
-
-    @Override
-    public String toString() {
-        return "HealthCard{" +
-                "id=" + id +
-                ", pesez=" + pesez +
-                ", description='" + description + '\'' +
-                ", weight=" + weight +
-                ", height=" + height +
-                ", length=" + length +
-                ", gender=" + gender +
-                ", bornDate=" + bornDate +
-                '}';
     }
 }

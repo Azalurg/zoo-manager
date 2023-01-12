@@ -33,4 +33,11 @@ public class AnimalRestController {
     public Animal addKeeper(@PathVariable Long id, @PathVariable Long keeperId) {
         return animalService.addKeeper(id, keeperId);
     }
+
+    @PatchMapping("/{id}/healthcard/{healthCardId}")
+    public Animal setHealthCard(@PathVariable Long id, @PathVariable Long healthCardId) {
+        return animalService.setHealthCard(id, healthCardId);
+    }
+
+    //Todo: add put and delete methods
 }
