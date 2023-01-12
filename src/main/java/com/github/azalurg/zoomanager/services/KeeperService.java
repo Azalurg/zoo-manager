@@ -15,6 +15,14 @@ public class KeeperService {
 
     private final KeeperRepository keeperRepository;
 
+    public List<Keeper> findAll() {
+        return (List<Keeper>) keeperRepository.findAll();
+    }
+
+    public Keeper findById(Long id) {
+        return keeperRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Keeper not found"));
+    }
+
     public KeeperService(KeeperRepository keeperRepository) {
         this.keeperRepository = keeperRepository;
     }
@@ -23,17 +31,13 @@ public class KeeperService {
         return (List<Keeper>) keeperRepository.findAll();
     }
 
-    public Keeper getKeeperById(Long id) {
-        return keeperRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Keeper not found"));
-    }
-
     public Keeper createKeeper(Keeper keeper) {
         return keeperRepository.save(keeper);
     }
 
     public Keeper updateKeeper(Keeper keeper) {
         Long id = keeper.getId();
-        Keeper existingKeeper = getKeeperById(id);
+        Keeper existingKeeper = findById(id);
         existingKeeper.setName(keeper.getName());
         existingKeeper.setSurname(keeper.getSurname());
         existingKeeper.setAddress(keeper.getAddress());
