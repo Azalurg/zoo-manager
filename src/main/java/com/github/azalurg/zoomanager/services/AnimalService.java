@@ -5,6 +5,7 @@ import com.github.azalurg.zoomanager.custom.Counter;
 import com.github.azalurg.zoomanager.models.Animal;
 import com.github.azalurg.zoomanager.models.HealthCard;
 import com.github.azalurg.zoomanager.models.Keeper;
+import com.github.azalurg.zoomanager.models.Specie;
 import com.github.azalurg.zoomanager.repositories.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,9 @@ public class AnimalService {
     @Autowired
     private HealthCardService healthCardService;
 
+    @Autowired
+    private  SpecieService specieService;
+
     public List<Animal> findAll(){
         return animalRepository.findAll();
     }
@@ -48,6 +52,13 @@ public class AnimalService {
         Animal animal = findById(id);
         HealthCard healthCard = healthCardService.findById(healthCardId);
         animal.setHealthCard(healthCard);
+        return animalRepository.save(animal);
+    }
+
+    public Animal setSpecie(Long id, Long specieId) {
+        Animal animal = findById(id);
+        Specie specie = specieService.findById(specieId);
+        animal.setSpecie(specie);
         return animalRepository.save(animal);
     }
 

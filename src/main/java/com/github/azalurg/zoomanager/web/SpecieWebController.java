@@ -26,7 +26,7 @@ public class SpecieWebController {
     @GetMapping
     public String getAnimalCountBySpecie(Model model) {
         List<Counter> animalCountBySpecieList = animalService.getAnimalCountBySpecie();
-        List<Specie> species = specieService.getAll();
+        List<Specie> species = specieService.findAll();
         List<SpecieCounterWrapper> specieCounter = new ArrayList<>();
 
         species.forEach(s -> {
