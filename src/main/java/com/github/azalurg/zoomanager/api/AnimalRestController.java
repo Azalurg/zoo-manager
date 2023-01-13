@@ -24,9 +24,9 @@ public class AnimalRestController {
         return animalService.findById(id);
     }
 
-    @PostMapping
-    public Animal createAnimal(@RequestBody Animal animal) {
-        return animalService.createAnimal(animal);
+    @PostMapping("/{keeperId}")
+    public Animal createAnimal(@RequestBody Animal animal, @PathVariable Long keeperId) {
+        return animalService.createAnimal(animal, keeperId);
     }
 
     @PatchMapping("/{id}/keeper/{keeperId}")

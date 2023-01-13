@@ -77,8 +77,13 @@ public class AnimalService {
         }
     }
 
-
     public Animal createAnimal(Animal animal) {
+        return animalRepository.save(animal);
+    }
+
+    public Animal createAnimal(Animal animal, Long keeperId) {
+        Keeper keeper = keeperService.findById(keeperId);
+        animal.addKeeper(keeper);
         return animalRepository.save(animal);
     }
 

@@ -110,6 +110,7 @@ public class DataLoader implements CommandLineRunner {
         namesList.forEach(name -> {
             // 10
             int s = this.random.nextInt(3);
+            int ks = this.random.nextInt(2)+1;
             HealthCard h = new HealthCard(
                     (long) Math.round(this.random.nextLong()*100000),
                     "",
@@ -119,17 +120,10 @@ public class DataLoader implements CommandLineRunner {
                     this.random.nextBoolean(),
                     getRandomDate());
             healthCardService.createHealthCard(h);
-            animals.add(animalService.createAnimal(new Animal(name, new Date(), species.get(s), h)));
-        });
-
-        // Add animals to keepers
-
-        animals.forEach(animal -> {
-            // 3
-            int ks = this.random.nextInt(2)+1;
+            Animal a = animalService.createAnimal(new Animal(name, new Date(), species.get(s), h));
             for(int i =0; i < ks; i++){
                 int k = this.random.nextInt(3);
-                animalService.addKeeperToAnimal(animal, keepers.get(k));
+                animalService.addKeeperToAnimal(a, keepers.get(k));
             }
         });
     }
