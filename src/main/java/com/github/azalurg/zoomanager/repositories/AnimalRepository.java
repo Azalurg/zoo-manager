@@ -14,22 +14,22 @@ import java.util.Set;
 
 @Repository
 public interface AnimalRepository extends CrudRepository<Animal, Long> {
-    @Query("SELECT a FROM Animal a JOIN FETCH a.keepers k")
+    @Query("SELECT DISTINCT a FROM Animal a JOIN FETCH a.keepers k ORDER BY a.name")
     List<Animal> findAll();
 
     @Query("SELECT k FROM Keeper k JOIN k.animals a WHERE a.id = :animalId")
     Set<Keeper> findKeepersByAnimalId(@Param("animalId") Long animalId);
 
-    @Query("SELECT a FROM Animal a ORDER BY a.name")
-    List<Animal> findAllAnimalsAndSortByName();
-
-    @Query("SELECT a FROM Animal a ORDER BY a.id")
+    @Query("SELECT DISTINCT a FROM Animal a JOIN FETCH a.keepers k ORDER BY a.id")
     List<Animal> findAllAnimalsAndSortById();
 
-    @Query("SELECT a, h.bornDate FROM Animal a JOIN a.healthCard h ORDER BY h.bornDate")
+    @Query("SELECT DISTINCT a FROM Animal a JOIN FETCH a.keepers k ORDER BY a.name")
+    List<Animal> findAllAnimalsAndSortByName();
+
+    @Query("SELECT DISTINCT a, h.bornDate FROM Animal a JOIN FETCH a.keepers k JOIN a.healthCard h ORDER BY h.bornDate")
     List<Animal> findAllAnimalsAndSortByBornDate();
 
-    @Query("SELECT a, s.name FROM Animal a JOIN a.specie s ORDER BY s.name")
+    @Query("SELECT DISTINCT a, s.name FROM Animal a JOIN FETCH a.keepers k JOIN a.specie s ORDER BY s.name")
     List<Animal> findAllAnimalsAndSortBySpecie();
 
     @Query(value = "SELECT s.id as specie, COUNT(*) as count FROM ANIMAL a inner JOIN SPECIE s ON s.id = a.specie_id GROUP BY s.id ORDER BY specie", nativeQuery = true)

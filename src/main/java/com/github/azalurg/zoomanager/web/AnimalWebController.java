@@ -27,7 +27,6 @@ public class AnimalWebController {
     @GetMapping
     public String getAllAnimals(@RequestParam(required = false, defaultValue = "id") String sortBy, Model model){
         List<Animal> animalList = this.animalService.getAllAnimals(sortBy);
-        animalList.forEach(animal -> animal.setKeepers(animalService.getKeepersForAnimal(animal.getId())));
         model.addAttribute("animals", animalList);
         return "animals/animals";
     }
