@@ -16,7 +16,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-//@Component
+@Component
 public class DataLoader implements CommandLineRunner {
     @Autowired
     private AnimalService animalService;
@@ -110,7 +110,10 @@ public class DataLoader implements CommandLineRunner {
         namesList.forEach(name -> {
             // 10
             int s = this.random.nextInt(3);
-            int ks = this.random.nextInt(2)+1;
+            int ks = this.random.nextInt(3)+1;
+            int i = 0;
+            Set<Integer> keeperIds = new HashSet<>();
+
             HealthCard h = new HealthCard(
                     (long) Math.round(this.random.nextLong()*100000),
                     "",
@@ -119,11 +122,18 @@ public class DataLoader implements CommandLineRunner {
                     (float) (Math.round(this.random.nextFloat()*10000)/100),
                     this.random.nextBoolean(),
                     getRandomDate());
+
             healthCardService.createHealthCard(h);
+
             Animal a = animalService.createAnimal(new Animal(name, new Date(), species.get(s), h));
-            for(int i =0; i < ks; i++){
+
+            while (i < ks) {
                 int k = this.random.nextInt(3);
-                animalService.addKeeperToAnimal(a, keepers.get(k));
+                if(!keeperIds.contains(k)) {
+                    keeperIds.add(k);
+                    i++;
+                    animalService.addKeeper(a.getId(), keepers.get(k).getId());
+                }
             }
         });
     }
