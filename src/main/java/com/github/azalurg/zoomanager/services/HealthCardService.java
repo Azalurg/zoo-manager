@@ -31,4 +31,17 @@ public class HealthCardService {
         healthCardRepository.deleteById(id);
     }
 
+    public HealthCard updateHealthCard(Long id, HealthCard newHealthCard) {
+        HealthCard existingHealthCard = findById(id);
+
+        existingHealthCard.setPesez(newHealthCard.getPesez());
+        existingHealthCard.setDescription(newHealthCard.getDescription());
+        existingHealthCard.setWeight(newHealthCard.getWeight());
+        existingHealthCard.setHeight(newHealthCard.getHeight());
+        existingHealthCard.setLength(newHealthCard.getLength());
+        existingHealthCard.setGender(newHealthCard.getGender());
+        existingHealthCard.setBornDate(newHealthCard.getBornDate());
+
+        return healthCardRepository.save(existingHealthCard);
+    }
 }

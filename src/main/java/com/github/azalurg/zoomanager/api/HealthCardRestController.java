@@ -1,9 +1,7 @@
 package com.github.azalurg.zoomanager.api;
 
 import com.github.azalurg.zoomanager.models.HealthCard;
-import com.github.azalurg.zoomanager.models.Keeper;
 import com.github.azalurg.zoomanager.services.HealthCardService;
-import com.github.azalurg.zoomanager.services.KeeperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +28,15 @@ public class HealthCardRestController {
         return healthCardService.createHealthCard(healthCard);
         //Todo: fix this method
     }
-}
 
-//Todo: add put and delete methods
+    @PutMapping("/{id}")
+    public HealthCard updateHealthCard(@PathVariable Long id, @RequestBody HealthCard healthCard) {
+        return healthCardService.updateHealthCard(id, healthCard);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteHealthCards(@PathVariable Long id) {
+        healthCardService.deleteHealthCard(id);
+    }
+
+}
