@@ -3,17 +3,23 @@ package com.github.azalurg.zoomanager.services;
 import com.github.azalurg.zoomanager.api.ResourceNotFoundException;
 import com.github.azalurg.zoomanager.models.Animal;
 import com.github.azalurg.zoomanager.models.Keeper;
+import com.github.azalurg.zoomanager.repositories.AnimalRepository;
 import com.github.azalurg.zoomanager.repositories.KeeperRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
 public class KeeperService {
-
+    @Autowired
     private final KeeperRepository keeperRepository;
+
+    @Autowired
+    private AnimalRepository animalRepository;
 
     public List<Keeper> findAll() {
         return (List<Keeper>) keeperRepository.findAll();
@@ -50,7 +56,11 @@ public class KeeperService {
     }
 
     public void deleteKeeper(Long id) {
-        keeperRepository.deleteById(id);
+        Keeper keeper = findById(id);
+        Set<Animal> animals = keeperRepository.findAllKeepersAnimals(id);
+        animals.forEach(animal -> animal.removeKeeper(keeper));
+        animalRepository.saveAll(animals);
+        keeperRepository.delete(keeper);
     }
 
     public Keeper findByUsername(String username) {

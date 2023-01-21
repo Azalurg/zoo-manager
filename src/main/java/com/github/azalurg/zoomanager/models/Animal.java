@@ -59,5 +59,9 @@ public class Animal {
     public void addKeeper(Keeper keeper) {
         this.keepers.add(keeper);
     }
+
+    public void removeKeeper(Keeper keeper) {
+        this.keepers.remove(keeper);
+    }
 }
 

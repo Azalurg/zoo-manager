@@ -3,6 +3,7 @@
 <head th:include="common/head.html"/>
 <body>
     <nav th:include="common/navbar"></nav>
+
     <form method="post" action="">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username"><br>
@@ -11,6 +12,7 @@
         <input type="submit" value="Submit">
         <button onclick="history.back()">Back</button>
     </form>
+
     <div th:if="${error}">
         <p th:text="${error}"></p>
     </div>
