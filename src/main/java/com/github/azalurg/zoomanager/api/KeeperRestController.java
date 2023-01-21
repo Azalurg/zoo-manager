@@ -27,6 +27,14 @@ public class KeeperRestController {
     public Keeper createKeeper(@RequestBody Keeper keeper) {
         return keeperService.createKeeper(keeper);
     }
+    
+    @PutMapping("/{id}")
+    public Keeper updateKeeper(@PathVariable Long id, @RequestBody Keeper keeper) {
+        return keeperService.updateKeeper(id, keeper);
+    }
 
-    //Todo: add put and delete methods
+    @DeleteMapping("/{id}")
+    public void deleteKeepers(@PathVariable Long id) {
+        keeperService.deleteKeeper(id);
+    }
 }

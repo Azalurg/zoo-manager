@@ -35,9 +35,9 @@ public class KeeperService {
         return keeperRepository.save(keeper);
     }
 
-    public Keeper updateKeeper(Keeper keeper) {
-        Long id = keeper.getId();
+    public Keeper updateKeeper(Long id, Keeper keeper) {
         Keeper existingKeeper = findById(id);
+
         existingKeeper.setName(keeper.getName());
         existingKeeper.setSurname(keeper.getSurname());
         existingKeeper.setAddress(keeper.getAddress());
@@ -45,6 +45,7 @@ public class KeeperService {
         existingKeeper.setEmail(keeper.getEmail());
         existingKeeper.setPassword(keeper.getPassword());
         existingKeeper.setUsername(keeper.getUsername());
+        
         return keeperRepository.save(existingKeeper);
     }
 
