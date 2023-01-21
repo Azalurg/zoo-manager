@@ -87,10 +87,17 @@ public class AnimalService {
         return animalRepository.save(animal);
     }
 
-    public Animal updateAnimal(Long id, Animal animal) {
+    public Animal updateAnimal(Long id, Animal newAnimal) {
         Animal existingAnimal = findById(id);
-        existingAnimal.setName(animal.getName());
-        existingAnimal.setDescription(animal.getDescription());
+
+        existingAnimal.setName(newAnimal.getName());
+        existingAnimal.setAdoptDate(newAnimal.getAdoptDate());
+        existingAnimal.setDescription(newAnimal.getDescription());
+        existingAnimal.setImage(newAnimal.getImage());
+        existingAnimal.setSpecie(newAnimal.getSpecie());
+        existingAnimal.setHealthCard(newAnimal.getHealthCard());
+        existingAnimal.setKeepers(newAnimal.getKeepers());
+
         return animalRepository.save(existingAnimal);
     }
 

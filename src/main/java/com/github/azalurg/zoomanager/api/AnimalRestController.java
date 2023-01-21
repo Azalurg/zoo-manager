@@ -44,5 +44,13 @@ public class AnimalRestController {
         return animalService.setSpecie(id, specieId);
     }
 
-    //Todo: add put and delete methods
+    @PutMapping("/{id}")
+    public Animal updateAnimal(@PathVariable Long id, @RequestBody Animal animal) {
+        return animalService.updateAnimal(id, animal);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteAnimals(@PathVariable Long id) {
+        animalService.deleteAnimal(id);
+    }
 }
