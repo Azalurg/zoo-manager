@@ -17,6 +17,7 @@ public interface AnimalRepository extends CrudRepository<Animal, Long> {
     @Query("SELECT DISTINCT a FROM Animal a JOIN FETCH a.keepers k ORDER BY a.name")
     List<Animal> findAll();
 
+    //TODO: move it
     @Query("SELECT k FROM Keeper k JOIN k.animals a WHERE a.id = :animalId")
     Set<Keeper> findKeepersByAnimalId(@Param("animalId") Long animalId);
 
@@ -26,10 +27,10 @@ public interface AnimalRepository extends CrudRepository<Animal, Long> {
     @Query("SELECT DISTINCT a FROM Animal a JOIN FETCH a.keepers k ORDER BY a.name")
     List<Animal> findAllAnimalsAndSortByName();
 
-    @Query("SELECT DISTINCT a, h.bornDate FROM Animal a JOIN FETCH a.keepers k JOIN a.healthCard h ORDER BY h.bornDate")
+    @Query("SELECT a FROM Animal a JOIN a.keepers k JOIN a.healthCard hc GROUP BY a.id ORDER BY MAX(hc.bornDate)")
     List<Animal> findAllAnimalsAndSortByBornDate();
 
-    @Query("SELECT DISTINCT a, s.name FROM Animal a JOIN FETCH a.keepers k JOIN a.specie s ORDER BY s.name")
+    @Query("SELECT a FROM Animal a JOIN a.keepers k JOIN a.specie s GROUP BY a.id ORDER BY MAX(s.name)")
     List<Animal> findAllAnimalsAndSortBySpecie();
 
     @Query(value = "SELECT s.id as specie, COUNT(*) as count FROM ANIMAL a inner JOIN SPECIE s ON s.id = a.specie_id GROUP BY s.id ORDER BY specie", nativeQuery = true)
