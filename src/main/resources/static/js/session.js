@@ -5,20 +5,21 @@ const getCookie = (name) => {
 }
 
 window.onload = function () {
-   const sk = getCookie('sessionKey');
+    const sk = getCookie('sessionKey');
+    if (!sk) return;
 
-   // Get all links
-   const allLinks = document.querySelectorAll("a");
+    // Get all links
+    const allLinks = document.querySelectorAll("a");
 
-   // Add session key as query parameter to href attributes of all links
-   allLinks.forEach(link => {
-     let currentHref = link.getAttribute("href");
-     if(currentHref.indexOf("?") === -1){
-       currentHref += `?sessionKey=${sk}`;
-     }else{
-       currentHref += `&sessionKey=${sk}`;
-     }
-     link.setAttribute("href", currentHref);
+    // Add session key as query parameter to href attributes of all links
+    allLinks.forEach(link => {
+        let currentHref = link.getAttribute("href");
+        if(currentHref.indexOf("?") === -1){
+        currentHref += `?sessionKey=${sk}`;
+        }else{
+            currentHref += `&sessionKey=${sk}`;
+        }
+        link.setAttribute("href", currentHref);
    });
 };
 
