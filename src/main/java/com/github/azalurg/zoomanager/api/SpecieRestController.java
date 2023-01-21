@@ -1,8 +1,6 @@
 package com.github.azalurg.zoomanager.api;
 
-import com.github.azalurg.zoomanager.models.Keeper;
 import com.github.azalurg.zoomanager.models.Specie;
-import com.github.azalurg.zoomanager.services.KeeperService;
 import com.github.azalurg.zoomanager.services.SpecieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +29,13 @@ public class SpecieRestController {
         //Todo: fix this method
     }
 
-    //Todo: add put and delete methods
+    @PutMapping("/{id}")
+    public Specie updateSpecie(@PathVariable Long id, @RequestBody Specie specie) {
+        return specieService.updateSpecie(id, specie);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteSpecies(@PathVariable Long id) {
+        specieService.deleteSpecie(id);
+    }
 }

@@ -45,7 +45,7 @@ public class KeeperService {
         existingKeeper.setEmail(keeper.getEmail());
         existingKeeper.setPassword(keeper.getPassword());
         existingKeeper.setUsername(keeper.getUsername());
-        
+
         return keeperRepository.save(existingKeeper);
     }
 

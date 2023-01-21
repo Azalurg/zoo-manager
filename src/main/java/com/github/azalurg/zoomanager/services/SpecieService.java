@@ -26,7 +26,21 @@ public class SpecieService {
         return specieRepository.save(specie);
     }
 
-    public void deleteSpiece(Specie specie) {
-        specieRepository.delete(specie);
+    public Specie updateSpecie(Long id, Specie newSpecie) {
+        Specie existingSpecie = findById(id);
+
+        existingSpecie.setName(newSpecie.getName());
+        existingSpecie.setDescription(newSpecie.getDescription());
+        existingSpecie.setType(newSpecie.getType());
+        existingSpecie.setFood(newSpecie.getFood());
+        existingSpecie.setHabitat(newSpecie.getHabitat());
+        existingSpecie.setStatus(newSpecie.getStatus());
+        existingSpecie.setImage(newSpecie.getImage());
+
+        return specieRepository.save(existingSpecie);
+    }
+
+    public void deleteSpecie(Long id) {
+        specieRepository.deleteById(id);
     }
 }
