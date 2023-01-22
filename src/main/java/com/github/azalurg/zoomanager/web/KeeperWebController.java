@@ -37,6 +37,7 @@ public class KeeperWebController {
             Keeper keeper = (Keeper) session.getAttribute(sessionKey);
             if (keeper != null) {
                 model.addAttribute("keeper", keeper);
+                model.addAttribute("animals", keeperService.getKeeperAnimals(keeper));
                 return "keepers/profile";
             }
         }

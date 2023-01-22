@@ -69,6 +69,10 @@ nav>ul>li {
   padding: 0.25rem 0.75rem;
 }
 
+.margin {
+    margin: 2rem;
+}
+
 /* CONTENT */
 
 .content {

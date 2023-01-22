@@ -32,7 +32,7 @@
                 <h3>Keepers</h3>
                 <ul>
                     <li th:each="keeper : ${animal.keepers}">
-                        <a th:href="@{/keepers/profile}" th:text="${keeper.name} + ' ' + ${keeper.surname}"></a>
+                        <p t th:text="${keeper.name} + ' ' + ${keeper.surname}"></p>
                     </li>
                 </ul>
             </div>

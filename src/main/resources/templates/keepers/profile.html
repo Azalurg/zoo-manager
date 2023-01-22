@@ -3,13 +3,42 @@
 <head th:include="common/head.html"/>
 <body>
     <nav th:include="common/navbar"></nav>
-    
-    <div class="profile content">
-      <h1 th:text="${keeper.name}"></h1>
-      <p th:text="${keeper.surname}"></p>
-      <p th:text="${keeper.address}"></p>
-      <p th:text="${keeper.email}"></p>
+
+    <div class="margin">
+        <div class="profile">
+            <h1 th:text="${keeper.name} + ' ' + ${keeper.surname}"></h1>
+            <p>Email: <span th:text="${keeper.email}"></span></p>
+            <p>Username: <span th:text="${keeper.username}"></span></p>
+            <p>Phone: <span th:text="${keeper.phone}"></span></p>
+            <p>Address: <span th:text="${keeper.address}"></span></p>
+        </div>
+        <table id="animals-list" class="content">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Specie</th>
+                <th>Keepers</th>
+                <th>Age</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="animal : ${animals}">
+                <td th:text="${animal.id}"></td>
+                <td>
+                    <a th:href="@{'/animals/' + ${animal.id}}" th:text="${animal.name}"></a>
+                </td>
+                <td th:text="${animal.specie.name}"></td>
+                <td>
+                    <span th:each="keeper : ${animal.keepers}" th:text="${keeper.name}" style="margin-right: 4px"></span>
+                </td>
+                <td th:text="${#dates.year(#dates.createNow()) - #dates.year(animal.healthCard.bornDate)}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
+
+
 
     <script th:inline="javascript">
         function setCookie(name, value, hours) {

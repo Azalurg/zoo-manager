@@ -4,17 +4,19 @@
 <body>
     <nav th:include="common/navbar"></nav>
 
-    <form method="post" action="">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br><br>
-        <input type="submit" value="Submit">
-        <button onclick="history.back()">Back</button>
-    </form>
+    <div class="margin">
+        <form method="post" action="/keepers/login">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Submit">
+            <button onclick="history.back()">Back</button>
+        </form>
 
-    <div th:if="${error}">
-        <p th:text="${error}"></p>
+        <div th:if="${error}" style="color: red; font-size: 1.5rem">
+            <p th:text="${error}"></p>
+        </div>
     </div>
 </body>
 </html>

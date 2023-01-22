@@ -71,4 +71,8 @@ public class KeeperService {
     public Keeper findByUsername(String username) {
         return keeperRepository.findByUsername(username);
     }
+
+    public Set<Animal> getKeeperAnimals(Keeper keeper) {
+        return keeperRepository.findAllKeepersAnimals(keeper.getId());
+    }
 }
