@@ -33,7 +33,7 @@
             </td>
             <td th:text="${animal.specie.name}"></td>
             <td>
-                <span th:each="keeper : ${animal.keepers}" th:text="${keeper.name}"></span>
+                <span th:each="keeper : ${animal.keepers}" th:text="${keeper.name}" style="margin-right: 4px"></span>
             </td>
             <td th:text="${#dates.year(#dates.createNow()) - #dates.year(animal.healthCard.bornDate)}"></td>
         </tr>

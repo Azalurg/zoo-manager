@@ -3,13 +3,40 @@
 <head th:include="common/head.html"/>
 <body>
     <nav th:include="common/navbar"></nav>
-    <h1 th:text="${animal.name}"></h1>
-    <p th:text="${animal.description}"></p>
-    <p>Species: <span th:text="${animal.specie.name}"></span></p>
-    <p>Type: <span th:text="${animal.specie.type}"></span></p>
-    <p>Food: <span th:text="${animal.specie.food}"></span></p>
-    <p>Habitat: <span th:text="${animal.specie.habitat}"></span></p>
-    <p>Status: <span th:text="${animal.specie.status}"></span></p>
-    <img th:src="${animal.specie.image}" alt="Animal image" />
+    <div class="content" style="margin: 2rem">
+        <div style="display:flex">
+            <img th:src="${animal.specie.image}" class="species-avatar" alt="Animal image" />
+            <div style="margin-left: 2rem">
+                <h2 th:text="${animal.name}"></h2>
+                <p th:text="${animal.specie.name}"></p>
+            </div>
+        </div>
+        <div class="info" style="display: flex">
+            <div>
+                <h3>Spice</h3>
+                <p>Type: <span th:text="${animal.specie.type}"></span></p>
+                <p>Food: <span th:text="${animal.specie.food}"></span></p>
+                <p>Habitat: <span th:text="${animal.specie.habitat}"></span></p>
+                <p>Status: <span th:text="${animal.specie.status}"></span></p>
+            </div>
+            <div style="margin-left: 2rem; margin-right: 2rem">
+                <h3>Health Card</h3>
+                <p>PESEZ number: <span th:text="${animal.healthCard.pesez}"></span></p>
+                <p>Weight: <span th:text="${animal.healthCard.weight}"></span></p>
+                <p>Height: <span th:text="${animal.healthCard.height}"></span></p>
+                <p>Length: <span th:text="${animal.healthCard.length}"></span></p>
+                <p>Age: <span th:text="${#dates.year(#dates.createNow()) - #dates.year(animal.healthCard.bornDate)}"></span></p>
+                <p>Gender: <span th:if="${animal.healthCard.gender}">male</span> <span th:unless="${animal.healthCard.gender}">female</span></p>
+            </div>
+            <div>
+                <h3>Keepers</h3>
+                <ul>
+                    <li th:each="keeper : ${animal.keepers}">
+                        <a th:href="@{/keepers/profile}" th:text="${keeper.name} + ' ' + ${keeper.surname}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
