@@ -61,7 +61,9 @@ public class Animal {
     }
 
     public void removeKeeper(Keeper keeper) {
+        System.out.println("Removing keeper " + this.keepers);
         this.keepers.remove(keeper);
+        System.out.println("Keeper removed" + this.keepers);
     }
 }
 

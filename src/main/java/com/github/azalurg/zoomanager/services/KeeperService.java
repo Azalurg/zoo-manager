@@ -58,8 +58,13 @@ public class KeeperService {
     public void deleteKeeper(Long id) {
         Keeper keeper = findById(id);
         Set<Animal> animals = keeperRepository.findAllKeepersAnimals(id);
-        animals.forEach(animal -> animal.removeKeeper(keeper));
-        animalRepository.saveAll(animals);
+        animals.forEach(animal ->{
+            Set<Keeper> k = animalRepository.findKeepersByAnimalId(animal.getId());
+            k.remove(keeper);
+            animal.setKeepers(k);
+            System.out.println(animal);
+            animalRepository.save(animal);
+        });
         keeperRepository.delete(keeper);
     }
 

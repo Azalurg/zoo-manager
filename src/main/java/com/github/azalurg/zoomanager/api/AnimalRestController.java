@@ -50,7 +50,8 @@ public class AnimalRestController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAnimals(@PathVariable Long id) {
+    public String deleteAnimals(@PathVariable Long id) {
         animalService.deleteAnimal(id);
+        return "Animal with ID: " + id + " is deleted";
     }
 }

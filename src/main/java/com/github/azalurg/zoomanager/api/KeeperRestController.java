@@ -34,7 +34,8 @@ public class KeeperRestController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteKeepers(@PathVariable Long id) {
+    public String deleteKeepers(@PathVariable Long id) {
         keeperService.deleteKeeper(id);
+        return "Keeper with ID: " + id + " is deleted";
     }
 }

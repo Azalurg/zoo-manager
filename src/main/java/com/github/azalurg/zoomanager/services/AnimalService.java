@@ -94,9 +94,6 @@ public class AnimalService {
         existingAnimal.setAdoptDate(newAnimal.getAdoptDate());
         existingAnimal.setDescription(newAnimal.getDescription());
         existingAnimal.setImage(newAnimal.getImage());
-        existingAnimal.setSpecie(newAnimal.getSpecie());
-        existingAnimal.setHealthCard(newAnimal.getHealthCard());
-        existingAnimal.setKeepers(newAnimal.getKeepers());
 
         return animalRepository.save(existingAnimal);
     }
