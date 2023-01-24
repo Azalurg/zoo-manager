@@ -2,7 +2,9 @@ package com.github.azalurg.zoomanager.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
@@ -16,6 +18,8 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
+@ToString
+@NoArgsConstructor
 public class Keeper {
 
     @Id
@@ -48,11 +52,8 @@ public class Keeper {
     private String password;
 
     @NotNull(message = "Username cannot be null")
-    @UniqueElements(message = "Username is not unique")
+    @Column(unique = true, nullable = false)
     private String username;
-
-    public Keeper() {
-    }
 
     public Keeper(String name, String surname, String address, String email, String password, String username) {
         this.name = name;
@@ -61,19 +62,5 @@ public class Keeper {
         this.email = email;
         this.password = password;
         this.username = username;
-    }
-
-    @Override
-    public String toString() {
-        return "Keepers{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", username='" + username + '\'' +
-                '}';
     }
 }

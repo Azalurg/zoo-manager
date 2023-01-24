@@ -7,8 +7,8 @@
      <nav th:include="common/navbar"></nav>
 
      <div style="margin: 2rem">
-          <h1>Register Keeper</h1>
-          <form action="#" th:action="@{/keepers/register}" th:object="${keeper}" method="post">
+          <h1>Update Keeper</h1>
+          <form action="#" th:action="@{'/keepers/update?sessionKey' + ${sessionKey})}" th:object="${keeper}" method="post">
                <div>
                     <label for="username">Username</label>
                     <input type="text" id="username" th:field="*{username}" />

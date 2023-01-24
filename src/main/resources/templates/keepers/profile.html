@@ -9,6 +9,7 @@
     <div class="margin">
         <div class="profile">
             <h1 th:text="${keeper.name} + ' ' + ${keeper.surname}"></h1>
+            <a href="/keepers/update" class="btn btn-primary">Update</a>
             <p>Email: <span th:text="${keeper.email}"></span></p>
             <p>Username: <span th:text="${keeper.username}"></span></p>
             <p>Phone: <span th:text="${keeper.phone}"></span></p>
