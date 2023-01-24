@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:include="common/head.html"/>
+
+<head th:include="common/head.html" />
+
 <body>
     <nav th:include="common/navbar"></nav>
     <div class="content" style="margin: 2rem">
@@ -25,8 +27,11 @@
                 <p>Weight: <span th:text="${animal.healthCard.weight}"></span></p>
                 <p>Height: <span th:text="${animal.healthCard.height}"></span></p>
                 <p>Length: <span th:text="${animal.healthCard.length}"></span></p>
-                <p>Age: <span th:text="${#dates.year(#dates.createNow()) - #dates.year(animal.healthCard.bornDate)}"></span></p>
-                <p>Gender: <span th:if="${animal.healthCard.gender}">male</span> <span th:unless="${animal.healthCard.gender}">female</span></p>
+                <p>Age: <span
+                        th:text="${#dates.year(#dates.createNow()) - #dates.year(animal.healthCard.bornDate)}"></span>
+                </p>
+                <p>Gender: <span th:if="${animal.healthCard.gender}">male</span> <span
+                        th:unless="${animal.healthCard.gender}">female</span></p>
             </div>
             <div>
                 <h3>Keepers</h3>
@@ -39,4 +44,5 @@
         </div>
     </div>
 </body>
+
 </html>

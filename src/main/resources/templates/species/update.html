@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
-<head th:include="common/head.html"/>
+
+<head th:include="common/head.html" />
+
 <body>
     <nav th:include="common/navbar"></nav>
 
@@ -24,8 +26,8 @@
                     <option value="Reptile">Reptile</option>
                     <option value="Fish">Fish</option>
                     <option value="Amphibian">Amphibian</option>
-                 <select>
-                <div th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
+                    <select>
+                        <div th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
             </div>
             <div>
                 <label>Food:</label>
@@ -43,18 +45,19 @@
                 <div th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></div>
             </div>
             <div>
-            <label>Status</label>
-            <select th:field="*{status}">
-                <option value="Extinct">Extinct</option>
-                <option value="Endangered">Endangered</option>
-                <option value="Vulnerable">Vulnerable</option>
-                <option value="Near Threatened">Near Threatened</option>
-                <option value="Least Concern">Least Concern</option>
-            </select>
-            <div th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
+                <label>Status</label>
+                <select th:field="*{status}">
+                    <option value="Extinct">Extinct</option>
+                    <option value="Endangered">Endangered</option>
+                    <option value="Vulnerable">Vulnerable</option>
+                    <option value="Near Threatened">Near Threatened</option>
+                    <option value="Least Concern">Least Concern</option>
+                </select>
+                <div th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
             </div>
             <div><input type="submit" value="Submit"></div>
         </form>
     </div>
 </body>
+
 </html>

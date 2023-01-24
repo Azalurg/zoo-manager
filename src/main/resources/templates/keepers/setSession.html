@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:include="common/head.html"/>
+
+<head th:include="common/head.html" />
 
 <body>
 
 </body>
 
 <script th:inline="javascript">
-        function setCookie(name, value, hours) {
-          let expires = "";
-          if (hours) {
-            let date = new Date();
-            date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-          }
-          document.cookie = name + "=" + (value || "") + expires + "; path=/";
-        }
-      var sessionKey = [[${sessionKey}]];
-      setCookie("sessionKey", sessionKey, 1)
-      window.location.replace("/keepers/profile?sessionKey=" + sessionKey);
+  function setCookie(name, value, hours) {
+    let expires = "";
+    if (hours) {
+      let date = new Date();
+      date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+  var sessionKey = [[${ sessionKey }]];
+  setCookie("sessionKey", sessionKey, 1)
+  window.location.replace("/keepers/profile?sessionKey=" + sessionKey);
 </script>
 
 </html>

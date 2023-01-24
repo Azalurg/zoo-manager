@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+
+<head th:include="common/head.html" />
+
+<body>
+     <nav th:include="common/navbar"></nav>
+
+     <div style="margin: 2rem">
+          <h1>Register Keeper</h1>
+          <form action="#" th:action="@{/keepers/register}" th:object="${keeper}" method="post">
+               <div>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" th:field="*{username}" />
+                    <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+               </div>
+               <div>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" th:field="*{password}" />
+                    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+               </div>
+               <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" th:field="*{name}" />
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+               </div>
+               <div>
+                    <label for="surname">Surname</label>
+                    <input type="text" id="surname" th:field="*{surname}" />
+                    <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div>
+               </div>
+               <div>
+                    <label for="address">Address</label>
+                    <input type="text" id="address" th:field="*{address}" />
+                    <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+                    <div>
+                         <label for="email">Email</label>
+                         <input type="text" id="email" th:field="*{email}" />
+                         <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                    </div>
+                    <div>
+                         <label for="phone">Phone</label>
+                         <input type="text" id="phone" th:field="*{phone}" placeholder="+48123456789" />
+                         <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+                    </div>
+
+
+                    <div><input type="submit" value="Submit"></div>
+          </form>
+     </div>
+</body>
+
+</html>

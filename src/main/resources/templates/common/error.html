@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:include="common/head.html"/>
+
+<head th:include="common/head.html" />
+
 <body>
     <nav th:include="common/navbar"></nav>
     <h1>An error occurred</h1>
     <h2 style="color: red" th:text="${errorMessage}">Error message</h2>
 </body>
+
 </html>
