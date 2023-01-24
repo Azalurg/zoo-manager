@@ -1,10 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 
+<head th:include="common/head.html" />
+
+<body>
+    <nav th:include="common/navbar"></nav>
+
+    <div style="margin: 2rem">
+        <h1>Update Animal</h1>
+        <form action="#" th:action="@{'/animals/update' + ${id}}" th:object="${animal}" method="post">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" th:field="*{name}" />
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+            <div>
+                <label for="adoptDate">Adopt Date</label>
+                <input type="date" id="adoptDate" th:field="*{adoptDate}" />
+                <div th:if="${#fields.hasErrors('adoptDate')}" th:errors="*{adoptDate}"></div>
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <textarea id="description" th:field="*{description}"></textarea>
+                <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+            </div>
+            <div>
+                <label for="image">Image</label>
+                <input type="text" id="image" th:field="*{image}" />
+                <div th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></div>
+            </div>
+            <div>
+                <label for="specie">Species</label>
+                <select id="specie" th:field="*{specie}">
+                    <option th:each="specie : ${species}" th:value="${specie.id}" th:text="${specie.name}"></option>
+                </select>
+                <div th:if="${#fields.hasErrors('specie')}" th:errors="*{specie}"></div>
+            </div>
+            <div>
+                <label for="keepers">Keepers</label>
+                <select id="keepers" th:field="*{keepers}">
+                  <option th:each="keeper : ${keepers}" th:value="${keeper.id}" th:text="${keeper.name} + ' ' + ${keeper.surname}" th:selected="${keeper.id == currentId}"></option>
+                </select>
+                <div th:if="${#fields.hasErrors('keepers')}" th:errors="*{keepers}"></div>
+            </div>
+            <div>
+                <label for="healthCard">Health Card</label>
+                <select id="healthCard" th:field="*{healthCard}">
+                    <option th:each="healthCard : ${healthCards}" th:value="${healthCard.id}" th:text="${healthCard.pesez}"></option>
+                </select>
+                <div th:if="${#fields.hasErrors('healthCard')}" th:errors="*{healthCard}"></div>
+            </div>
+            <div><input type="submit" value="Submit"></div>
+        </form>
+    </div>
 </body>
+
 </html>

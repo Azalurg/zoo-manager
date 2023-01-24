@@ -11,6 +11,9 @@
             <div style="margin-left: 2rem">
                 <h2 th:text="${animal.name}"></h2>
                 <p th:text="${animal.specie.name}"></p>
+                <div th:if="${loggedIn}">
+                    <a th:href="@{'/animals/update/' + ${animal.id}}" class="btn btn-primary">Edit</a>
+                </div>
             </div>
         </div>
         <div class="info" style="display: flex">

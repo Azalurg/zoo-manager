@@ -43,43 +43,54 @@
                 </select>
                 <div th:if="${#fields.hasErrors('keepers')}" th:errors="*{keepers}"></div>
             </div>
-
-            <fieldset>
-                <legend>Animal's health</legend>
-                <div>
-                    <label for="pesez">Vaccination</label>
-                    <input type="text" id="pesez" th:field="*{healthCard.pesez}" />
-                    <div th:if="${#fields.hasErrors('pesez')}" th:errors="*{pesez}"></div>
-                </div>
-                <div>
-                    <label for="weight">Weight</label>
-                    <input type="number" id="weight" th:field="*{healthCard.weight}" />
-                    <div th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}"></div>
-                </div>
-                <div>
-                    <label for="height">Height</label>
-                    <input type="number" id="height" th:field="*{healthCard.height}" />
-                    <div th:if="${#fields.hasErrors('height')}" th:errors="*{height}"></div>
-                    </div>
-                <div>
-                    <label for="length">Weight</label>
-                    <input type="number" id="length" th:field="*{healthCard.length}" />
-                    <div th:if="${#fields.hasErrors('length')}" th:errors="*{length}"></div>
-                </div>
-                <div>
-                    <label for="bornDate">Born Date</label>
-                    <input type="date" id="bornDate" th:field="*{healthCard.bornDate}" />
-                    <div th:if="${#fields.hasErrors('bornDate')}" th:errors="*{bornDate}"></div>
-                </div>
-                <div>
-                    <label for="gender">Gender</label>
-                    <select id="gender" th:field="*{healthCard.gender}">
-                        <option value=true>Male</option>
-                        <option value=false>Female</option>
-                    </select>
-                    <div th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
-                </div>
-            </fieldset>
+            <div>
+                <label for="healthCard">Health Card</label>
+                <select id="healthCard" th:field="*{healthCard}">
+                    <option th:each="healthCard : ${healthCards}" th:value="${healthCard.id}" th:text="${healthCard.pesez}"></option>
+                </select>
+                <div th:if="${#fields.hasErrors('healthCard')}" th:errors="*{healthCard}"></div>
+            </div>
+<!--            <fieldset>-->
+<!--                <legend>Animal's health</legend>-->
+<!--                <div>-->
+<!--                    <label for="pesez">PESEZ</label>-->
+<!--                    <input type="text" id="pesez" th:field="*{healthCard.pesez}" />-->
+<!--                    <div th:if="${#fields.hasErrors('healthCard.pesez')}" th:errors="*{healthCard.pesez}"></div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="weight">Weight</label>-->
+<!--                    <input type="number" id="weight" th:field="*{healthCard.weight}" />-->
+<!--                    <div th:if="${#fields.hasErrors('healthCard.weight')}" th:errors="*{healthCard.weight}"></div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="height">Height</label>-->
+<!--                    <input type="number" id="height" th:field="*{healthCard.height}" />-->
+<!--                    <div th:if="${#fields.hasErrors('healthCard.height')}" th:errors="*{healthCard.height}"></div>-->
+<!--                    </div>-->
+<!--                <div>-->
+<!--                    <label for="length">Weight</label>-->
+<!--                    <input type="number" id="length" th:field="*{healthCard.length}" />-->
+<!--                    <div th:if="${#fields.hasErrors('healthCard.length')}" th:errors="*{healthCard.length}"></div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="bornDate">Born Date</label>-->
+<!--                    <input type="date" id="bornDate" th:field="*{healthCard.bornDate}" />-->
+<!--                    <div th:if="${#fields.hasErrors('healthCard.bornDate')}" th:errors="*{healthCard.bornDate}"></div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="gender">Gender</label>-->
+<!--                    <select id="gender" th:field="*{healthCard.gender}">-->
+<!--                        <option value=true>Male</option>-->
+<!--                        <option value=false>Female</option>-->
+<!--                    </select>-->
+<!--                    <div th:if="${#fields.hasErrors('healthCard.gender')}" th:errors="*{healthCard.gender}"></div>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label for="description2">Description</label>-->
+<!--                    <textarea id="description2" th:field="*{healthCard.description}"></textarea>-->
+<!--                    <div th:if="${#fields.hasErrors('healthCard.description')}" th:errors="*{healthCard.description}"></div>-->
+<!--                </div>-->
+<!--            </fieldset>-->
 
             <div><input type="submit" value="Submit"></div>
         </form>

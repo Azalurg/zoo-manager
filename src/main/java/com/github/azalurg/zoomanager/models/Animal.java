@@ -40,8 +40,8 @@ public class Animal {
     @NotNull(message = "Name cannot be null")
     private String name;
 
-    @NotNull(message = "Adopt date cannot be null")
-    @Temporal(TemporalType.DATE)
+//    @NotNull(message = "Adopt date cannot be null")
+//    @Temporal(TemporalType.DATE)
     private Date adoptDate;
 
     @Nullable

@@ -3,6 +3,7 @@ package com.github.azalurg.zoomanager.web;
 import com.github.azalurg.zoomanager.models.Animal;
 import com.github.azalurg.zoomanager.models.HealthCard;
 import com.github.azalurg.zoomanager.models.Keeper;
+import com.github.azalurg.zoomanager.models.Specie;
 import com.github.azalurg.zoomanager.services.AnimalService;
 import com.github.azalurg.zoomanager.services.HealthCardService;
 import com.github.azalurg.zoomanager.services.KeeperService;
@@ -67,24 +68,24 @@ public class AnimalWebController {
             return "redirect:/keepers/login";
         }
 
+        Animal a = new Animal();
+        a.setHealthCard(new HealthCard());
+
 
         model.addAttribute("species", specieService.findAll());
         model.addAttribute("keepers", keeperService.findAll());
-        model.addAttribute("healthCard", new HealthCard());
         model.addAttribute("currentId", keeperId);
-        model.addAttribute("animal", new Animal());
+        model.addAttribute("animal", a);
         return "animals/add";
     }
 
     @PostMapping("/add")
-    public String addAnimalPost(@Valid @ModelAttribute("animal") Animal animal, Errors errors, @RequestParam(required = false, defaultValue = "") String sessionKey, Model model, HttpSession session) {
+    public String addAnimalPost(@ModelAttribute("animal") Animal animal, Errors errors, @RequestParam(required = false, defaultValue = "") String sessionKey, Model model, HttpSession session) {
         if (errors.hasErrors()) {
             return "animals/add";
         }
-
-        animalService.createAnimal(animal);
-        model.addAttribute("animal", new Animal());
-        return "redirect:/animals";
+//
+        return "redirect:/animals/" + animalService.createAnimal(animal).getId();
     }
 
     @GetMapping("/update/{id}")
@@ -92,6 +93,7 @@ public class AnimalWebController {
         Animal animal = animalService.findById(id);
         if (animal != null) {
             model.addAttribute("animal", animal);
+            model.addAttribute("id", id);
             return "animals/update";
         }
         return "animals/animal" + id;
@@ -112,11 +114,19 @@ public class AnimalWebController {
 
 
     @GetMapping("/{id}")
-    public String getAnimalById(@PathVariable Long id, Model model) {
+    public String getAnimalById(@PathVariable Long id, @RequestParam(required = false, defaultValue = "") String sessionKey, Model model,  HttpSession session) {
         Animal animal = animalService.findById(id);
-        animal.setKeepers(animalService.getKeepersForAnimal(id));
+
+        boolean loggedIn = false;
+        if (!Objects.equals(sessionKey, "")) {
+            Keeper keeper = (Keeper) session.getAttribute(sessionKey);
+            if (keeper != null) {
+                loggedIn = true;
+            }
+        }
+
         model.addAttribute("animal", animal);
+        model.addAttribute("loggedIn", loggedIn);
         return "animals/animal";
     }
-
 }
