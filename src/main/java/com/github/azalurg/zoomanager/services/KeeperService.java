@@ -33,10 +33,6 @@ public class KeeperService {
         this.keeperRepository = keeperRepository;
     }
 
-    public List<Keeper> getAllKeepers() {
-        return (List<Keeper>) keeperRepository.findAll();
-    }
-
     public Keeper createKeeper(Keeper keeper) {
         return keeperRepository.save(keeper);
     }
