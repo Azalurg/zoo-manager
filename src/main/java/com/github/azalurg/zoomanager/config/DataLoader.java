@@ -110,7 +110,7 @@ public class DataLoader implements CommandLineRunner {
         namesList.forEach(name -> {
             // 10 | 3
             int s = this.random.nextInt(10);
-            int ks = this.random.nextInt(10)+1;
+            int ks = this.random.nextInt(3)+1;
             int i = 0;
             Set<Integer> keeperIds = new HashSet<>();
 

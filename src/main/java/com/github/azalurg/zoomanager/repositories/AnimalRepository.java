@@ -34,4 +34,7 @@ public interface AnimalRepository extends CrudRepository<Animal, Long> {
 
     @Query(value = "SELECT s.id as specie, COUNT(*) as count FROM ANIMAL a inner JOIN SPECIE s ON s.id = a.specie_id GROUP BY s.id ORDER BY specie", nativeQuery = true)
     List<Object[]> findAnimalCountBySpecie();
+
+    @Query("SELECT DISTINCT a FROM Animal a JOIN a.keepers WHERE a.specie.id = :specieId")
+    List<Animal> findBySpecieId(@Param("specieId") Long specieId);
 }

@@ -7,10 +7,13 @@
         <h1>Animals</h1>
         <div class="species-list">
             <div th:each="sc : ${specieCounter}" class="species-container">
-                <img th:src="${sc.specie.image}" alt="Animal image" class="species-avatar" />
-                <div class="species-description">
-                    <span th:text="${sc.specie.name}"></span> (<span th:text="${sc.amount}"></span>)
-                </div>
+
+                <a th:href="@{'/species/' + ${sc.specie.id}}">
+                    <img th:src="${sc.specie.image}" alt="Animal image" class="species-avatar" />
+                    <div class="species-description">
+                        <span th:text="${sc.specie.name}"></span> (<span th:text="${sc.amount}"></span>)
+                    </div>
+                </a>
             </div>
         </div>
     </div>

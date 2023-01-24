@@ -121,4 +121,8 @@ public class AnimalService {
         });
         return sc;
     }
+
+    public Object findBySpecie(Long id) {
+        return animalRepository.findBySpecieId(id);
+    }
 }
