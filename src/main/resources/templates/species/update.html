@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head th:include="common/head.html"/>
+<body>
+    <nav th:include="common/navbar"></nav>
+
+    <div style="margin: 2rem">
+        <form action="#" th:action="@{/species/update/{id}(id=${specie.id})}" th:object="${specie}" method="post">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" th:field="*{name}" />
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+            <div>
+                <label>Description:</label>
+                <input type="text" id="description" th:field="*{description}">
+                <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+            </div>
+            <div>
+                <label>Type:</label>
+                <select id="type" th:field="*{type}">
+                    <option value="Mammal">Mammal</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Reptile">Reptile</option>
+                    <option value="Fish">Fish</option>
+                    <option value="Amphibian">Amphibian</option>
+                 <select>
+                <div th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
+            </div>
+            <div>
+                <label>Food:</label>
+                <input type="text" id="food" th:field="*{food}">
+                <div th:if="${#fields.hasErrors('food')}" th:errors="*{food}"></div>
+            </div>
+            <div>
+                <label>Habitat:</label>
+                <input type="text" id="habitat" th:field="*{habitat}">
+                <div th:if="${#fields.hasErrors('habitat')}" th:errors="*{habitat}"></div>
+            </div>
+            <div>
+                <label>Image:</label>
+                <input type="text" id="image" th:field="*{image}">
+                <div th:if="${#fields.hasErrors('image')}" th:errors="*{image}"></div>
+            </div>
+            <div>
+            <label>Status</label>
+            <select th:field="*{status}">
+                <option value="Extinct">Extinct</option>
+                <option value="Endangered">Endangered</option>
+                <option value="Vulnerable">Vulnerable</option>
+                <option value="Near Threatened">Near Threatened</option>
+                <option value="Least Concern">Least Concern</option>
+            </select>
+            <div th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></div>
+            </div>
+            <div><input type="submit" value="Submit"></div>
+        </form>
+    </div>
+</body>
+</html>

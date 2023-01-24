@@ -2,6 +2,7 @@ package com.github.azalurg.zoomanager.models;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,6 +16,7 @@ public class Specie {
     private Long id;
 
     @NotNull(message = "Name cannot be null")
+    @Column(name="name", unique = true, nullable = false)
     private String name;
 
     @NotNull(message = "Description cannot be null")
@@ -46,6 +48,16 @@ public class Specie {
         this.habitat = habitat;
         this.status = status;
         this.image = image;
+    }
+
+    public Specie(Specie specie) {
+        this.name = specie.getName();
+        this.description = specie.getDescription();
+        this.type = specie.getType();
+        this.food = specie.getFood();
+        this.habitat = specie.getHabitat();
+        this.status = specie.getStatus();
+        this.image = specie.getImage();
     }
 
     @Override

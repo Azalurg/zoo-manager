@@ -9,6 +9,9 @@
             <img th:src="${specie.image}" class="species-avatar" alt="Specie image" />
             <div style="margin-left: 2rem">
                 <h2 th:text="${specie.name}"></h2>
+                <div th:if="${loggedIn}">
+                    <a th:href="@{'/species/update/' + ${specie.id}}" class="btn btn-primary">Edit</a>
+                </div>
             </div>
         </div>
         <div class="info" style="display: flex">

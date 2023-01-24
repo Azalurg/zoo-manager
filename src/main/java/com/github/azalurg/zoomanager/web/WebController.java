@@ -14,4 +14,10 @@ public class WebController {
     public String home(){
         return "home";
     }
+
+    @GetMapping("/error")
+    public String error(HttpServletRequest request, Model model){
+        model.addAttribute("error", request.getAttribute("javax.servlet.error.message"));
+        return "error";
+    }
 }
