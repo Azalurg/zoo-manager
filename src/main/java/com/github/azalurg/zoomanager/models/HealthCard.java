@@ -1,6 +1,11 @@
 package com.github.azalurg.zoomanager.models;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import com.github.azalurg.zoomanager.custom.Pesez;
+import com.github.azalurg.zoomanager.custom.PesezType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,25 +24,31 @@ public class HealthCard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull(message = "Pesez cannot be null")
+    @Pattern(regexp = "^[0-9]{11}$", message = "Pesez must be 10 digits")
+    @PesezType
     private Long pesez;
 
-    @NotNull
+    @NotNull(message = "Description cannot be null")
     private String description;
 
-    @NotNull
+    @NotNull(message = "Weight cannot be null")
+    @Size(min = 0, message = "Weight must be greater than 0")
     private Float weight;
 
-    @NotNull
+    @NotNull(message = "Height cannot be null")
+    @Size(min = 0, message = "Height must be greater than 0")
     private Float height;
 
-    @NotNull
+    @NotNull(message = "Length cannot be null")
+    @Size(min = 0, message = "Length must be greater than 0")
     private Float length;
 
-    @NotNull
+    @NotNull(message = "Gender cannot be null")
     private Boolean gender;
 
-    @NotNull
+    @NotNull(message = "Born date cannot be null")
+    @Temporal(TemporalType.DATE)
     private Date bornDate;
 
     public HealthCard(Long pesez, String description, Float weight, Float height, Float length, Boolean gender, Date bornDate) {

@@ -1,10 +1,10 @@
 package com.github.azalurg.zoomanager.models;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -14,25 +14,25 @@ public class Specie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotNull(message = "Name cannot be null")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Description cannot be null")
     private String description;
 
-    @NotNull
+    @NotNull(message = "Type cannot be null")
     private String type;
 
-    @NotNull
+    @NotNull(message = "Food cannot be null")
     private String food;
 
-    @NotNull
+    @NotNull(message = "Habitat cannot be null")
     private String habitat;
 
-    @NotNull
+    @NotNull(message = "Status cannot be null")
     private String status;
 
-    @NotNull
+    @NotNull(message = "Image cannot be null")
     private String image;
 
     public Specie() {
